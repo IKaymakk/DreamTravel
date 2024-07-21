@@ -1,0 +1,59 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Feature>
+
+<div class="best-rooms py-5">
+
+    <div class="container py-md-5">
+        <div class="text-left">
+            <h6 class="sub-title">Göz At</h6>
+            <h3 class="hny-title">Hala Emin Değilseniz</h3>
+        </div>
+        <br />
+        <div class="ban-content-inf row">
+            @foreach (var x in Model)
+            {
+                if (x.Post1Status == true)
+                {
+                    <div class="maghny-gd-1 col-lg-6">
+                        <div class="maghny-grid">
+                            <figure class="effect-lily border-radius  m-0">
+                                <img style="height:620px" class="img-fluid" src="@x.Post1Image" alt="" />
+                                <figcaption>
+                                    <div>
+                                        <h4>@x.Post1Title</h4>
+                                        <p>@x.Post1Description</p>
+                                    </div>
+
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                }
+            }
+
+            <div class="maghny-gd-1 col-lg-6 mt-lg-0 mt-4">
+                <div class="row">
+                    @foreach (var x in Model)
+                    {
+                        if (x.Post1Status == false)
+                        {
+                            <div style="margin-bottom:1.5em" class="maghny-gd-1 col-6">
+                                <div class="maghny-grid">
+                                    <figure class="effect-lily border-radius">
+                                        <img style="height:298px" class="img-fluid" src="@x.Post1Image" alt="" />
+                                        <figcaption>
+                                            <div>
+                                                <h4>@x.Post1Title</h4>
+                                                <p>@x.Post1Description</p>
+                                            </div>
+
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
