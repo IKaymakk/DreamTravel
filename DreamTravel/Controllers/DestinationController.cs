@@ -7,7 +7,7 @@ namespace DreamTravel.Controllers
 {
     public class DestinationController : Controller
     {
-        GenericManager<Destination> manager = new GenericManager<Destination>(new EfDestinationDal());
+        DestinationManager manager = new DestinationManager(new EfDestinationDal());
         public IActionResult Index()
         {
             var values = manager.GetListAll();
@@ -15,6 +15,7 @@ namespace DreamTravel.Controllers
         }
         public IActionResult DestinationDetails(int id)
         {
+            ViewBag.i = id;
             var did = manager.GetById(id);
             return View(did);
         }

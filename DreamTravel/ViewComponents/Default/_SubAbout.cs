@@ -7,7 +7,7 @@ namespace DreamTravel.ViewComponents.Default
 {
     public class _SubAbout : ViewComponent
     {
-        GenericManager<SubAbout> manager = new GenericManager<SubAbout>(new EfSubAboutDal());
+        SubAboutManager manager = new SubAboutManager(new EfSubAboutDal());
         public IViewComponentResult Invoke()
 
         {

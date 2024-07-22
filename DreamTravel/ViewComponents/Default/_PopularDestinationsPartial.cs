@@ -7,7 +7,7 @@ namespace DreamTravel.ViewComponents.Default
 {
     public class _PopularDestinationsPartial : ViewComponent
     {
-        GenericManager<Destination> manager = new GenericManager<Destination>(new EfDestinationDal());
+        DestinationManager manager = new DestinationManager(new EfDestinationDal());
         public IViewComponentResult Invoke()
         {
             var values = manager.GetListAll();

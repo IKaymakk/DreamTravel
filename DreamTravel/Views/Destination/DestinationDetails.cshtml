@@ -15,7 +15,7 @@
                 <h2 class="title">Tur Detayları</h2>
                 <ul class="breadcrumbs-custom-path mt-2">
                     <li><a href="/Default/Index/">Ana Sayfa</a></li>
-                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Rehberin Yorumları </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Rehberlerin Yorumları </li>
                 </ul>
             </div>
         </div>
@@ -25,7 +25,7 @@
     <div class="py-5 w3l-homeblock1 text-center">
         <div class="container mt-md-3">
             <h3 class="blog-desc-big text-center mb-4">
-                Rehberimiz rota için neler demiş ?
+                Rehberlerimiz rota için neler demiş ?
             </h3>
             <div class="blog-post-align">
                 <div class="blog-post-img">
@@ -69,7 +69,6 @@
                     <span>orem ipsum dolor sit amet, consectetur adipiscing elit. Nulla est turpis, bibendum eu mollis nec, rutrum in orci. Nullam vehicula lectus id augue condimentum eleifend. Fusce suscipit lorem nec tortor pellentesque, id dignissim enim laoreet. Suspendisse eros urna, accumsan quis augue vitae, blandit commodo odio. Praesent non ante urna. Praesent dignissim risus et sem pulvinar, quis maximus erat porttitor. Aliquam mollis nunc eget porttitor interdum. Praesent a viverra diam. Phasellus id elit blandit, varius augue egestas, rhoncus elit.</span>
                     <!--------------------------------------------İKİNCİPARAGRAF----------------------------------------------->
 
-
                     <!--------------------------------------------REHBERSÖZÜ----------------------------------------------->
                     <blockquote class="blockquote my-5">
                         <div class="icon-quote"><span class="fa fa-quote-left" aria-hidden="true"></span></div>
@@ -89,13 +88,19 @@
                             <a href="#url"><img src="@Model.Image" class="img-fluid-details2 radius-image" alt=""></a>
                         </div>
                     </div>
+
+                    <!--------------------------------------------3----------------------------------------------->
                     <h3 class="blog-desc-big m-0 mb-lg-4 mb-3">2.Paragraf</h3>
                     <p class="mb-4">
                         Cras elementum, mauris vel convallis consequat, lacus justo faucibus mi, at aliquet magna felis eu tellus. Donec mattis vel risus at vehicula. Maecenas consectetur bibendum felis vitae varius. Etiam molestie mollis velit ac interdum. Donec quis est sapien. Integer sit amet vulputate nisi. In ultrices sollicitudin dignissim. Cras porta urna at efficitur porta. Cras porttitor, velit eget ultrices pulvinar, felis risus pharetra nisi, sed laoreet tortor enim ac mi. Phasellus in ipsum ultrices ante aliquam auctor. Aenean vulputate, erat eu pretium blandit, lectus dui convallis tellus, vel consectetur dolor urna vitae diam. In ultrices nibh commodo enim rutrum commodo. Maecenas pulvinar nunc facilisis ipsum consectetur, id mollis lacus feugiat. Quisque eu molestie massa. In placerat neque at sem mattis, eu elementum ligula sodales.
                     </p>
+                    <!--------------------------------------------3----------------------------------------------->
+                    <!--------------------------------------------4----------------------------------------------->
                     <p class="mb-4">
                         Cras elementum, maurdsadsadsadis velsa dsadsad sadsads convallis conseadsadadsaquat, lacus justo faucibus mi, at aliquet magna felis eu tellus. Donec mattis vel risus at vehicula. Maecenas consectetur bibendum felis vitae varius. Etiam molestie mollis velit ac interdum. Donec quis est sapien. Integer sit amet vulputate nisi. In ultrices sollicitudin dignissim. Cras porta urna at efficitur porta. Cras porttitor, velit eget ultrices pulvinar, felis risus pharetra nisi, sed laoreet tortor enim ac mi. Phasellus in ipsum ultrices ante aliquam auctor. Aenean vulputate, erat eu pretium blandit, lectus dui convallis tellus, vel consectetur dolor urna vitae diam. In ultrices nibh commodo enim rutrum commodo. Maecenas pulvinar nunc facilisis ipsum consectetur, id mollis lacus feugiat. Quisque eu molestie massa. In placerat neque at sem mattis, eu elementum ligula sodales.
                     </p>
+                    <!--------------------------------------------4----------------------------------------------->
+
                     <div class="d-grid left-right mt-5 pb-md-5">
                         <div class="buttons-singles tags">
                             <h4>Etiketler :</h4>
@@ -120,7 +125,7 @@
                         <div class="row align-items-center">
                             <div class="col-sm-3 col-6">
                                 <div>
-                                    <img src="" alt="" class="rounded-circle img-fluid">
+                                    <img src="@Model.Image" alt="" class="rounded-circle img-fluid">
                                 </div>
                             </div>
                             <div class="col-sm-9 mt-sm-0 mt-3">
@@ -170,19 +175,13 @@
                         </div>
                     </div>
                     <!--//author-card-->
-                    @*                    @await Component.InvokeAsync("_CommentList", new { id = ViewBag.i })
-                    *@
-                    @*                    @await Html.PartialAsync("~/Views/Comment/AddComment.cshtml", new { id = ViewBag.destID })
-                    *@                    <br /><br />
+                    @await Component.InvokeAsync("_CommentList", new { id = ViewBag.i })
+                    <partial name="~/Views/Comment/AddComment.cshtml"  />
+                    <br /><br />
                 </div>
             </div>
-            <!--//blog-post-->
         </div>
     </section>
-
-    <!--/w3l-footer-29-main-->
 </body>
-
 </html>
-
-
+@*model="new { id = ViewBag.destID }"*@

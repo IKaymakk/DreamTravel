@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,26 +23,37 @@ namespace DataAccessLayer.Repository
         public void Add(T t)
         {
             _object.Add(t);
+            c.SaveChanges();
         }
 
         public void Delete(T t)
         {
-            _object.Remove(t);
+            _object.Remove(t); c.SaveChanges();
+
         }
 
         public List<T> GetAll()
         {
-            return _object.ToList();
+            return _object.ToList(); c.SaveChanges();
+
+        }
+
+        public List<T> GetAllByFilter(Expression<Func<T, bool>> filter)
+        {
+            return _object.Where(filter).ToList(); c.SaveChanges();
+
         }
 
         public T GetById(int id)
         {
-            return _object.Find(id);
+            return _object.Find(id); c.SaveChanges();
+
         }
 
         public void Update(T t)
         {
-            _object.Update(t);
+            _object.Update(t); c.SaveChanges();
+
         }
     }
 }

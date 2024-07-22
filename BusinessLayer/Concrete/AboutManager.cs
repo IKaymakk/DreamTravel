@@ -9,10 +9,38 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class AboutManager : GenericManager<About>, IAboutService
+    public class AboutManager : IAboutService
     {
-        public AboutManager(IGenericDal<About> genericDal) : base(genericDal)
+        IAboutDal _dal;
+
+        public AboutManager(IAboutDal dal)
         {
+            _dal = dal;
+        }
+
+        public void Delete(About t)
+        {
+            _dal.Delete(t);
+        }
+
+        public About GetById(int id)
+        {
+            return _dal.GetById(id);
+        }
+
+        public List<About> GetListAll()
+        {
+            return _dal.GetAll();
+        }
+
+        public void Insert(About t)
+        {
+            _dal.Add(t);
+        }
+
+        public void Update(About t)
+        {
+            _dal.Update(t);
         }
     }
 }
