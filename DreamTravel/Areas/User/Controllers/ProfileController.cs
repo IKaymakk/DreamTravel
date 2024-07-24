@@ -47,23 +47,34 @@ namespace DreamTravel.Areas.User.Controllers
                     await p.image.CopyToAsync(stream);
                 }
                 values.ImageUrl = "/userimages/" + imagename;
-                p.imageurl = "/userimages/" + imagename;
+                p.imageurl = values.ImageUrl;
             }
 
             values.Name = p.name;
             values.Surname = p.surname;
             values.Email = p.email;
             values.PhoneNumber = p.phonenumber;
+            p.imageurl = values.ImageUrl;
             values.UserName = p.username;
             values.PasswordHash = _userManager.PasswordHasher.HashPassword(values, p.password);
             var result = await _userManager.UpdateAsync(values);
 
-            if (result.Succeeded)
-            {
-                RedirectToAction("SignIn", "Login");
-            }
-            return View(p);
 
+            if (p.password == p.confirpassword)
+            {
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("SignIn", "Login");
+                }
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
+            }
+            return View();
         }
     }
 }
