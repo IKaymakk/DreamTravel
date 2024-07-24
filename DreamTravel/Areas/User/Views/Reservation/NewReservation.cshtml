@@ -3,8 +3,15 @@
     ViewData["Title"] = "NewReservation";
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
+<h3>Rezervasyon Yap</h3>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/sweetalert/dist/sweetalert.min.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<form style="width:98%" method="post">
+<form id="reservationForm" style="width:98%" method="post">
     <div class="form-group">
         <label>Rotalar</label>
         @Html.DropDownListFor(x=>x.Destination,(List<SelectListItem>)ViewBag.v,new {@class="form-control"})
@@ -21,6 +28,31 @@
         <label>Eklemek İstedikleriniz</label>
         <textarea type="text" asp-for="Description" class="form-control"></textarea>
     </div>
-    <button class="btn btn-sm btn-outline-dark" onclick="alert('Rezervasyonunuz başlangıçta onay bekliyor şeklinde alınacaktır.Rezervasyon onaylanma süreci için güncel rezervasyonlarım menüsünü takip etmeyi unutmayın');">Rezervasyon Oluştur</button>
+    <button type="submit" class="xxx btn bg-gradient-primary">Rezervasyon Yap</button>
+
 </form>
 
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.xxx').click(function (event) {
+            event.preventDefault(); // Formun varsayılan gönderme davranışını durdur
+            Swal.fire({
+                title: 'Rezervasyon Oluşturulsun mu?',
+                text: 'Rezervasyonunuz onay aşamasına geçecektir, onaylandığı durumda sizinle iletişime geçeceğiz',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Oluştur',
+                cancelButtonText: 'İptal',
+                confirmButtonColor: '#28a745', // Yeşil renk
+                cancelButtonColor: '#d33' // Kırmızı renk
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#reservationForm').submit();
+                }
+            });
+        });
+    });
+</script>

@@ -30,6 +30,8 @@ namespace EntityLayer.Concrete
         public string? Image { get; set; }
         public int Capacity { get; set; }
         public bool Status { get; set; }
+
+        public List<Reservation> Reservations { get; set; }
         public List<Comment> Comments { get; set; }
     }
 }

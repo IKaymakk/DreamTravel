@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -11,6 +12,14 @@ namespace DreamTravel.Areas.User.Controllers
     {
         DestinationManager dm = new DestinationManager(new EfDestinationDal());
         ReservationManager rm = new ReservationManager(new EfReservationDal());
+
+        private readonly UserManager<AppUser> _userManager;
+
+        public ReservationController(UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
         [HttpGet]
         public IActionResult NewReservation()
         {
@@ -30,10 +39,16 @@ namespace DreamTravel.Areas.User.Controllers
             p.AppUserId = 11;
             p.ReservationDate = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
             rm.Insert(p);
-            return RedirectToAction("ProgressingReservation");
+            return RedirectToAction("Index", "Guide", new { @area = "User" });
         }
 
-        public IActionResult ProgressingReservation()
+        public async Task<IActionResult> ProgressingReservation()
+        {
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            var list = rm.GetListReservationWithDestination(values.Id);
+            return View(list);
+        }
+        public async Task<IActionResult> PendingApprovalReservation()
         {
             return View();
         }

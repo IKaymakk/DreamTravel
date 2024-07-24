@@ -27,9 +27,20 @@ namespace BusinessLayer.Concrete
         {
             throw new NotImplementedException();
         }
+
+        public List<Reservation> GetFilterList(int id)
+        {
+            return _dal.GetAllByFilter(x => x.AppUserId == id);
+        }
+
         public List<Reservation> GetListAll()
         {
             throw new NotImplementedException();
+        }
+
+        public List<Reservation> GetListReservationWithDestination(int id)
+        {
+            return _dal.GetListReservationWithDestination(id);
         }
 
         public void Insert(Reservation t)
