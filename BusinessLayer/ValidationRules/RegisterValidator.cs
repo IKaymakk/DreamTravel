@@ -1,14 +1,11 @@
-﻿using EntityLayer.Concrete;
-using FluentValidation;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace BusinessLayer.ValidationRules
 {
-    public class UserValidator : AbstractValidator<AppUser>
-    {
-    }
+  
 }

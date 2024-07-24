@@ -1,7 +1,9 @@
 using DataAccessLayer.Concrete;
+using DreamTravel.Models;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.Options;
 
 namespace DreamTravel
 {
@@ -13,7 +15,16 @@ namespace DreamTravel
 
             // Add services to the container.
             builder.Services.AddDbContext<Context>();
-            builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+            builder.Services.AddIdentity<AppUser, AppRole>(_ =>
+            {
+                
+                _.Password.RequiredLength = 8;
+                _.Password.RequireNonAlphanumeric = false;
+                _.Password.RequireLowercase = false;
+                _.Password.RequireUppercase = false;
+                _.Password.RequireDigit = false;
+            }).AddEntityFrameworkStores<Context>()
+            .AddErrorDescriber<CustomIdentityValidator>();
 
 
             builder.Services.AddControllersWithViews();
@@ -24,7 +35,7 @@ namespace DreamTravel
                 Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
-           
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -45,6 +56,14 @@ namespace DreamTravel
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+            });
 
             app.Run();
         }

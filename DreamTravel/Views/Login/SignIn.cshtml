@@ -1,4 +1,5 @@
-﻿@{
+﻿@model DreamTravel.Models.UserLoginViewModel
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -15,19 +16,21 @@
         <div class="overlay">
             <div class="wrapper">
                 <div class="logo">
-                    <a style="color:white;;font-size:60px;font-weight:bold" class="brand-logo" href="index.html">DreamTravel</a>
+                    <a style="color:white;font-size:60px;font-weight:bold" class="brand-logo" href="index.html">DreamTravel</a>
                 </div>
                 <div class="form-section">
                     <h3>Giriş Yap</h3>
                     <br />
                     <form method="post" class="signin-form">
                         <div class="form-input">
-                            <input  type="text" placeholder="Kullanıcı Adı" required="" autofocus>
+                            <input asp-for="Username" type="text" placeholder="Kullanıcı Adı" required="" autofocus>
+                            <span asp-validation-for="Username"></span>
                         </div>
                         <div class="form-input">
-                            <input  type="password" placeholder="Şifre" required="">
+                            <input asp-for="Password" type="password" placeholder="Şifre" required="">
+                            <span asp-validation-for="Password"></span>
                         </div>
-                        
+
                         <button type="submit" style="background-color:#FF1654;" class="btn btn-info theme-button mt-4">Giriş</button>
                         <p class="signup"> <a style="color:black" href="/Login/SignUp" class="signuplink">Hesap Oluştur</a></p>
                     </form>
@@ -40,3 +43,7 @@
     </section>
 </body>
 </html>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
