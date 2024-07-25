@@ -36,10 +36,10 @@ namespace DreamTravel.Areas.User.Controllers
         public IActionResult NewReservation(Reservation p)
         {
             p.Status = "Onay Bekliyor";
-            p.AppUserId = 11;
+            p.AppUserId = 20;
             p.ReservationDate = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
             rm.Insert(p);
-            return RedirectToAction("Index", "Guide", new { @area = "User" });
+            return RedirectToAction("ProgressingReservation");
         }
 
         public async Task<IActionResult> ProgressingReservation()
