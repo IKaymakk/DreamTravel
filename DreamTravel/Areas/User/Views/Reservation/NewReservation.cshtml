@@ -14,7 +14,9 @@
 <form id="reservationForm" style="width:98%" method="post">
     <div class="form-group">
         <label>Rotalar</label>
-        @Html.DropDownListFor(x=>x.Destination,(List<SelectListItem>)ViewBag.v,new {@class="form-control"})
+        <select asp-for="DestinationID" class="form-control" asp-items="ViewBag.v" required>
+            <option value="">Nereye Gitmek İstiyorsunuz?</option>
+        </select>
     </div>
     <div class="form-group">
         <label>Kişi Sayısı</label>
@@ -39,20 +41,54 @@
     $(document).ready(function () {
         $('.xxx').click(function (event) {
             event.preventDefault(); // Formun varsayılan gönderme davranışını durdur
-            Swal.fire({
-                title: 'Rezervasyon Oluşturulsun mu?',
-                text: 'Rezervasyonunuz onay aşamasına geçecektir, onaylandığı durumda sizinle iletişime geçeceğiz',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Oluştur',
-                cancelButtonText: 'İptal',
-                confirmButtonColor: '#28a745', // Yeşil renk
-                cancelButtonColor: '#d33' // Kırmızı renk
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $('#reservationForm').submit();
-                }
-            });
+
+            var isValid = true;
+            var errorMessage = '';
+
+            // DestinationID kontrolü
+            var destinationSelect = document.getElementById('DestinationID');
+            var personCount = document.getElementById('PersonCount');
+            var reservationDate = document.getElementById('ReservationDate');
+
+            if (destinationSelect.value === "") {
+                isValid = false;
+                errorMessage += 'Lütfen bir rota seçiniz.\n';
+            }
+            if (personCount.value === "") {
+                isValid = false;
+                errorMessage += 'Lütfen kişi sayısını giriniz.\n';
+            }
+            if (reservationDate.value === "") {
+                isValid = false;
+                errorMessage += 'Lütfen tarihi giriniz.\n';
+            }
+
+
+            if (isValid) {
+                Swal.fire({
+                    title: 'Rezervasyon Oluşturulsun mu?',
+                    text: 'Rezervasyonunuz onay aşamasına geçecektir, onaylandığı durumda sizinle iletişime geçeceğiz',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Oluştur',
+                    cancelButtonText: 'İptal',
+                    confirmButtonColor: '#28a745', // Yeşil renk
+                    cancelButtonColor: '#d33' // Kırmızı renk
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#reservationForm').submit();
+                    }
+                });
+            } else {
+                Swal.fire({
+                    title: 'Hata',
+                    text: errorMessage,
+                    icon: 'error',
+                    confirmButtonText: 'Tamam',
+                    confirmButtonColor: '#d33' // Kırmızı renk
+                });
+            }
         });
     });
+
 </script>

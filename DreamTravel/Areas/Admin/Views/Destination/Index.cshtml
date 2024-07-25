@@ -1,0 +1,50 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Destination>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <h4 class="card-header">Tur Rotaları<a class="text-primary" style="padding-left:45.5em;font-size:20px" href="/Admin/Destination/NewDestination"> Yeni Tur Ekle</a></h4>
+    <div class="table-responsive text-nowrap">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tur Adı</th>
+                    <th>Süre</th>
+                    <th>Fiyat</th>
+                    <th>Kapasite</th>
+                    <th>Durum</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td><strong>@x.DestinationID</strong></td>
+                        <td>@x.City</td>
+                        <td>@x.DayNight</td>
+                        <td>$@x.Price</td>
+                        <td>@x.Capacity</td>
+                        <td><span class="badge bg-label-primary me-1">@x.Status</span></td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="btn btn-outline-primary">Ayarlar</i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/Admin/Destination/UpdateDestination/@x.DestinationID"><i class="bx bx-edit-alt me-1"></i>Düzenle</a>
+                                    <a class="dropdown-item" href="/Admin/Destination/DeleteDestination/@x.DestinationID"><i class="bx bx-trash me-1"></i>Sil</a>
+                                    <a class="dropdown-item" href="/Destination/DestinationDetails/@x.DestinationID"><i class="bx bxs-folder-open me-1"></i>Sitede Gör</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

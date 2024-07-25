@@ -1,0 +1,107 @@
+﻿@model EntityLayer.Concrete.Destination
+@{
+    ViewData["Title"] = "NewDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card mb-4">
+    <form method="post">
+        <h5 class="card-header text-primary">Yeni Tur Girişi</h5>
+        <div class="card-body demo-vertical-spacing demo-only-element">
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">Rota Adı*</span>
+                <input asp-for="City" type="text" class="form-control" placeholder="Türkiye / Antalya" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">Süre*</span>
+                <input asp-for="DayNight" type="text" class="form-control" placeholder="4 Gece / 5 Gün" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">Kapasite*</span>
+                <input asp-for="Capacity" type="text" class="form-control" placeholder="50" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">Resim*</span>
+                <input asp-for="Image" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text">$*</span>
+                <input asp-for="Price" type="text" class="form-control" placeholder="Fiyat Girin" aria-label="Amount (to the nearest dollar)" />
+                <span class="input-group-text">.0</span>
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text">Açıklama*</span>
+                <textarea asp-for="Description" class="form-control" aria-label="With textarea" placeholder="..."></textarea>
+            </div>
+            <button class="btn btn-outline-primary">Ekle</button>
+            <br />
+            <br />
+            <h5>Tur Detayı Sayfası İçeriği</h5>
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">Ana Resim</span>
+                <input asp-for="CoverImage" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">1. Resim</span>
+                <input asp-for="BlogImage1" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">2. Resim</span>
+                <input asp-for="BlogImage2" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">1. Açıklama Başlığı</span>
+                <input asp-for="DescriptionTitle1" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">1. Açıklama</span>
+                <input asp-for="Description1" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">2. Açıklama Başlığı</span>
+                <input asp-for="DescriptionTitle2" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">2. Açıklama</span>
+                <input asp-for="Description2" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">3. Açıklama</span>
+                <input type="text" asp-for="Description3" class="form-control" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">4. Açıklama</span>
+                <input type="text" asp-for="Description4" class="form-control" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">Rehber Adı</span>
+                <input type="text" class="form-control" asp-for="GuideName" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">Rehber Resmi</span>
+                <input type="text" class="form-control" asp-for="GuideImage" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">Kısa Açıklama</span>
+                <input type="text" class="form-control" aria-label="Username" asp-for="ShortDescription" aria-describedby="basic-addon11" />
+            </div>
+        </div>
+    </form>
+</div>

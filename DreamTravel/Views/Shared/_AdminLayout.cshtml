@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en"
+      class="light-style layout-menu-fixed"
+      dir="ltr"
+      data-theme="theme-default"
+      data-assets-path="../assets/"
+      data-template="vertical-menu-template-free">
+<head>
+    <partial name="~/Areas/Admin/Views/Admin/PartialHeader.cshtml"></partial>
+</head>
+<body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+            <partial name="~/Areas/Admin/Views/Admin/PartialSideBar.cshtml"></partial>
+            <div class="layout-page">
+                <partial name="~/Areas/Admin/Views/Admin/PartialNavbar.cshtml"></partial>
+                <!-- Content wrapper -->
+                <div class="content-wrapper">
+                    <div class="container-xxl flex-grow-1 container-p-y">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <div class="buy-now">
+        <a href="/Default/Index"
+           target="_blank"
+           class="btn btn-danger btn-buy-now">Siteye Git</a>
+    </div>
+
+    <script src="~/sneat-1.0.0/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="~/sneat-1.0.0/assets/vendor/libs/popper/popper.js"></script>
+    <script src="~/sneat-1.0.0/assets/vendor/js/bootstrap.js"></script>
+    <script src="~/sneat-1.0.0/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/sneat-1.0.0/assets/vendor/js/menu.js"></script>
+    <script src="~/sneat-1.0.0/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="~/sneat-1.0.0/assets/js/main.js"></script>
+    <script src="~/sneat-1.0.0/assets/js/dashboards-analytics.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
+</html>
