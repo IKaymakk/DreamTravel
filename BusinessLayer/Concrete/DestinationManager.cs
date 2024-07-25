@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace BusinessLayer.Concrete
     public class DestinationManager : IDestinationService
     {
         IDestinationDal _dal;
+        private readonly Context _context;
 
         public DestinationManager(IDestinationDal dal)
         {
@@ -32,6 +34,11 @@ namespace BusinessLayer.Concrete
         {
             return _dal.GetAll();
         }
+
+        //public float GetTotalPrice()
+        //{
+        //    return (float)_context.Destinations.Sum(d => d.Price);
+        //}
 
         public void Insert(Destination t)
         {
