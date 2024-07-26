@@ -1,0 +1,76 @@
+﻿@model IEnumerable<EntityLayer.Concrete.AppUser>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int sayac = 0;
+}
+
+<script>
+    function clicked(e) {
+        if (!confirm('Silmek istediğinden emin misin?')) {
+            e.preventDefault();
+        }
+    }
+</script>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+<div class="card">
+    <h4 class="card-header">Kullanıcı Listesi<a class="text-primary" style="padding-left:41.5em;font-size:20px" href="/Admin/User/NewUser">Yeni Kullanıcı Ekle</a></h4>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th style="color:black">#</th>
+                    <th class="text-secondary opacity-7">Profil Resmi</th>
+                    <th class="text-secondary opacity-7">Adı Soyadı</th>
+                    <th class="text-secondary opacity-7">Mail Adresi</th>
+                    <th class="text-secondary opacity-7">Telefon Numarası</th>
+                    <th style="width:30px" class="text-secondary opacity-7">Yorumları</th>
+                    <th class="text-secondary opacity-7">Tur Geçmişi</th>
+                    <th class="text-secondary opacity-7">Sil</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var x in Model)
+                {
+                    sayac += 1;
+                    <tr>
+                        <td>
+                            <p style="color:black" class="text-xs font-weight-bolder mb-0">@sayac</p>
+                        </td>
+                        <td>
+                            <div class="d-flex px-2 py-1">
+                                <div>
+                                    <img style="width:80px;height:80px;border-radius:20px" src="@x.ImageUrl" class=" me-3" alt="user6">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@x.Name @x.Surname</p>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@x.Email</p>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@x.PhoneNumber</p>
+                        </td>
+                        <td>
+                            <a class="btn btn-outline-primary">Yorumları</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-outline-primary">Tur Geçmişi</a>
+                        </td>
+                        <td>
+                            <a onclick="return confirm('Silmek istediğinden emin misin?')" class="text-danger" href="/Admin/User/DeleteUser/@x.Id"><i class="bx bx-trash me-1"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

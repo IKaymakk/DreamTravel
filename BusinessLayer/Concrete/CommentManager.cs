@@ -24,6 +24,11 @@ namespace BusinessLayer.Concrete
             _dal.Delete(t);
         }
 
+        public List<Comment> GetAdminList()
+        {
+            return _dal.AdminCommentList();
+        }
+
         public List<Comment> GetAll(int id)
         {
             return _dal.GetAllByFilter(x => x.DestinationID == id);

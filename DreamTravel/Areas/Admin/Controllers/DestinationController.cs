@@ -1,17 +1,26 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DreamTravel.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [AllowAnonymous]
     public class DestinationController : Controller
     {
-        DestinationManager dm = new DestinationManager(new EfDestinationDal());
+        private readonly IDestinationService _destinationService;
+
+        public DestinationController(IDestinationService destinationService)
+        {
+            _destinationService = destinationService;
+        }
+
         public IActionResult Index()
         {
-            var values = dm.GetListAll();
+            var values = _destinationService.GetListAll();
             return View(values);
         }
 
@@ -24,25 +33,25 @@ namespace DreamTravel.Areas.Admin.Controllers
         public IActionResult NewDestination(Destination P)
         {
             P.Status = true;
-            dm.Insert(P);
+            _destinationService.Insert(P);
             return RedirectToAction("Index");
         }
         public IActionResult DeleteDestination(int id)
         {
-            var destination = dm.GetById(id);
-            dm.Delete(destination);
+            var destination = _destinationService.GetById(id);
+            _destinationService.Delete(destination);
             return RedirectToAction("Index", "Destination", new { area = "Admin" });
         }
         [HttpGet]
         public IActionResult UpdateDestination(int id)
         {
-            var destination = dm.GetById(id);
+            var destination = _destinationService.GetById(id);
             return View(destination);
         }
         [HttpPost]
         public IActionResult UpdateDestination(Destination p)
         {
-            dm.Update(p);
+            _destinationService.Update(p);
             return RedirectToAction("Index");
         }
 

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Comment>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card">
+    <h4 class="card-header">Turlara Yapılan Yorumlar</h4>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="text-secondary opacity-7">#</th>
+                    <th class="text-secondary opacity-7">Adı</th>
+                    <th  class="text-secondary opacity-7">Yorum Yapılan Tur</th>
+                    <th class="text-secondary opacity-7">Yorum</th>
+                    <th class="text-secondary opacity-7">Tarih</th>
+                    <th class="text-secondary opacity-7">Sil</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@x.CommentID</p>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@x.CommentUser</p>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@x.Destination.City</p>
+                        </td>
+                        <td>
+                            @if (x.CommentContent.Length > 50)
+                            {
+                                <p class="text-xs font-weight-bold mb-0">@x.CommentContent.Substring(0,49)...</p>
+                            }
+                            else
+                            {
+                                <p class="text-xs font-weight-bold mb-0">@x.CommentContent</p>
+                            }
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@x.CommentDate.ToShortDateString()</p>
+                        </td>
+                        <td>
+                            <a class="text-danger" href="/Admin/Comment/DeleteComment/@x.CommentID"><i class="bx bx-trash me-1"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

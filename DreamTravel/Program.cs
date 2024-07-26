@@ -1,4 +1,9 @@
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using BusinessLayer.Container;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using DreamTravel.Models;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
@@ -17,7 +22,7 @@ namespace DreamTravel
             builder.Services.AddDbContext<Context>();
             builder.Services.AddIdentity<AppUser, AppRole>(_ =>
             {
-                
+
                 _.Password.RequiredLength = 8;
                 _.Password.RequireNonAlphanumeric = false;
                 _.Password.RequireLowercase = false;
@@ -26,6 +31,7 @@ namespace DreamTravel
             }).AddEntityFrameworkStores<Context>()
             .AddErrorDescriber<CustomIdentityValidator>();
 
+            builder.Services.ContainerDependencies();
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddMvc(config =>
