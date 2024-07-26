@@ -1,0 +1,63 @@
+﻿@model List<EntityLayer.Concrete.Guide>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int sayac = 0;
+}
+
+<div class="card">
+    <h4 class="card-header">Aktif Rehberlerimiz (@ViewBag.Count)<a class="text-primary" style="padding-left:38.5em;font-size:20px" href="/Admin/Guide/AddGuide"> Yeni Rehber Ekle</a></h4>
+    <div class=" p-0">
+        <table style="width:100%" class="text-center table align-items-center mb-0 table-hover">
+            <thead>
+                <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Görsel</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Adı</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hakkında</th>
+                    <th class="text-secondary opacity-7">Ayarlar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    sayac += 1;
+                    <tr>
+                        <td>@sayac</td>
+                        <td>
+                            <div class="d-flex px-2 py-1 justify-content-center">
+                                <div>
+                                    <img style="width:50px;height:50px;border-radius:999px" src="@x.Image" class="me-3" alt="user6">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@x.Name</p>
+                        </td>
+                        <td>
+                            @if (x.Description.Length > 50)
+                            {
+                                <p class="text-xs font-weight-bold mb-0">@x.Description.Substring(0,49)...</p>
+                            }
+                            else
+                            {
+                                <p class="text-xs font-weight-bold mb-0">@x.Description</p>
+                            }
+                        </td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="btn btn-outline-primary">Ayarlar</i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/Admin/Guide/UpdateGuide/@x.GuideID"><i class="bx bx-edit-alt me-1"></i>Düzenle</a>
+                                    <a class="dropdown-item" href="/Admin/Guide/DeleteGuide/@x.GuideID"><i class="bx bx-trash me-1"></i>Sil</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

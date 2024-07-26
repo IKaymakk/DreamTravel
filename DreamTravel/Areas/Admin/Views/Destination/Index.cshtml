@@ -28,7 +28,16 @@
                         <td>@x.DayNight</td>
                         <td>$@x.Price</td>
                         <td>@x.Capacity</td>
-                        <td><span class="badge bg-label-primary me-1">@x.Status</span></td>
+                        <td>
+                            @if (x.Status == true)
+                            {
+                                <span class="badge bg-label-primary me-1">Aktif</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-label-warning me-1">Pasif</span>
+                            }
+                        </td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

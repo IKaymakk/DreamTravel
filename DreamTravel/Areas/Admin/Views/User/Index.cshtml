@@ -14,12 +14,12 @@
     }
 </script>
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script> 
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 
 <div class="card">
-    <h4 class="card-header">Kullanıcı Listesi<a class="text-primary" style="padding-left:41.5em;font-size:20px" href="/Admin/User/NewUser">Yeni Kullanıcı Ekle</a></h4>
+    <h4 class="card-header">Kullanıcı Listesi<a class="text-primary" style="padding-left:41.5em;font-size:20px" href="/Login/SignUp">Yeni Kullanıcı Ekle</a></h4>
     <div class="table-responsive text-nowrap">
         <table class="table table-hover">
             <thead>
@@ -62,7 +62,7 @@
                             <a class="btn btn-outline-primary">Yorumları</a>
                         </td>
                         <td>
-                            <a class="btn btn-outline-primary">Tur Geçmişi</a>
+                            <a href="/Admin/User/UserReservations/@x.Id" class="btn btn-outline-primary">Tur Geçmişi</a>
                         </td>
                         <td>
                             <a onclick="return confirm('Silmek istediğinden emin misin?')" class="text-danger" href="/Admin/User/DeleteUser/@x.Id"><i class="bx bx-trash me-1"></i></a>

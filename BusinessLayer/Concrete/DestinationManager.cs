@@ -5,6 +5,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -48,6 +49,21 @@ namespace BusinessLayer.Concrete
         public void Update(Destination t)
         {
             _dal.Update(t);
+        }
+
+        public void ChangeDestinationStatus(int id)
+        {
+            var value = _dal.GetById(id);
+            if (value.Status == true)
+            {
+                value.Status = false;
+                _dal.Update(value);
+            }
+            else
+            {
+                value.Status = true;
+                _dal.Update(value);
+            }
         }
     }
 }

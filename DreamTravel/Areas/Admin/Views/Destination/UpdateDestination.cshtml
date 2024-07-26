@@ -39,9 +39,19 @@
                 <span class="input-group-text">Açıklama*</span>
                 <textarea asp-for="Description" class="form-control" aria-label="With textarea" placeholder="..."></textarea>
             </div>
-            <button class="btn btn-outline-primary">Kaydet</button>
+            <button class="btn btn-outline-primary">Kaydet</button> 
+            @if(Model.Status == true)
+            {
+                <a href="/Admin/Destination/ChangeDestinationStatus/@Model.DestinationID" class="btn btn-outline-warning">Durumu Pasif Yap</a>
+            }
+            else
+            {
+                <a href="/Admin/Destination/ChangeDestinationStatus/@Model.DestinationID" class="btn btn-outline-success">Durumu Aktif Yap</a>
+            }
+
             <br />
             <br />
+
             <h5>Tur Detayı Sayfası İçeriği</h5>
 
             <div class="input-group">

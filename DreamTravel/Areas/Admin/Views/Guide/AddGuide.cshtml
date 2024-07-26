@@ -1,0 +1,35 @@
+﻿@model EntityLayer.Concrete.Guide
+@{
+    ViewData["Title"] = "AddGuide";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card mb-4">
+    <form method="post">
+        <h5 class="card-header text-primary">Yeni Tur Rehberi Girişi</h5>
+        <div class="card-body demo-vertical-spacing demo-only-element">
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">Rehber Ad Soyad</span>
+                <input asp-for="Name" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon11" />
+                <span class="input-group-text" id="basic-addon11">Görsel</span>
+                <input asp-for="Image" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">İnstagram URL</span>
+                <input asp-for="InstagramUrl" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" />
+                <span class="input-group-text" id="basic-addon11">Twitter URL</span>
+                <input asp-for="TwitterUrl" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">Hakkında</span>
+                <input asp-for="Description" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <input asp-for="GuideID" type="hidden" readonly="readonly" />
+
+            <button class="btn btn-outline-primary">Ekle</button>
+        </div>
+    </form>
+</div>

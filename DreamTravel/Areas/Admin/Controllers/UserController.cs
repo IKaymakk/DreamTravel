@@ -1,5 +1,8 @@
 ﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Concrete;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DreamTravel.Areas.Admin.Controllers
@@ -9,10 +12,11 @@ namespace DreamTravel.Areas.Admin.Controllers
     public class UserController : Controller
     {
         private readonly IAppUserService _appUserService;
-
-        public UserController(IAppUserService appUserService)
+        private readonly IReservationService _reservationService;
+        public UserController(IAppUserService appUserService, IReservationService reservationService)
         {
             _appUserService = appUserService;
+            _reservationService = reservationService;
         }
 
         public IActionResult Index()
@@ -31,9 +35,13 @@ namespace DreamTravel.Areas.Admin.Controllers
         {
             return View();
         }
-        public IActionResult UserReservations()
+        public IActionResult UserReservations(int id)
         {
-            return View();  
+            var values = _appUserService.GetById(id);
+            ViewBag.Name = values.Name;
+            ViewBag.Surname = values.Surname;
+            var list = _reservationService.GetListReservationWithDestination(id);
+            return View(list);
         }
     }
 }

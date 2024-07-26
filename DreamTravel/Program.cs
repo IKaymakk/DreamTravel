@@ -18,8 +18,17 @@ namespace DreamTravel
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            //////////////////////////////////////////////////
+
+            //builder.Services.AddLogging(x =>
+            //{
+            //    x.ClearProviders();
+            //    x.SetMinimumLevel(LogLevel.Debug);
+            //    x.AddDebug();
+            //});
+
             builder.Services.AddDbContext<Context>();
+
             builder.Services.AddIdentity<AppUser, AppRole>(_ =>
             {
 
@@ -34,6 +43,7 @@ namespace DreamTravel
             builder.Services.ContainerDependencies();
 
             builder.Services.AddControllersWithViews();
+         
             builder.Services.AddMvc(config =>
             {
                 var policy = new AuthorizationPolicyBuilder().
@@ -41,7 +51,9 @@ namespace DreamTravel
                 Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
-
+            
+            
+            //////////////////////////////////////////////////
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

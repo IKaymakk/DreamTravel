@@ -45,6 +45,7 @@ namespace DreamTravel.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult UpdateDestination(int id)
         {
+
             var destination = _destinationService.GetById(id);
             return View(destination);
         }
@@ -52,6 +53,11 @@ namespace DreamTravel.Areas.Admin.Controllers
         public IActionResult UpdateDestination(Destination p)
         {
             _destinationService.Update(p);
+            return RedirectToAction("Index");
+        }
+        public IActionResult ChangeDestinationStatus(int id)
+        {
+            _destinationService.ChangeDestinationStatus(id);
             return RedirectToAction("Index");
         }
 

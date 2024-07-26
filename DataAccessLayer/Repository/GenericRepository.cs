@@ -28,25 +28,26 @@ namespace DataAccessLayer.Repository
 
         public void Delete(T t)
         {
-            _object.Remove(t); c.SaveChanges();
+            _object.Remove(t); 
+            c.SaveChanges();
 
         }
 
         public List<T> GetAll()
         {
-            return _object.ToList(); c.SaveChanges();
+            return _object.ToList();
 
         }
 
         public List<T> GetAllByFilter(Expression<Func<T, bool>> filter)
         {
-            return _object.Where(filter).ToList(); c.SaveChanges();
+            return _object.Where(filter).ToList();
 
         }
 
         public T GetById(int id)
         {
-            return _object.Find(id); c.SaveChanges();
+            return _object.Find(id); 
 
         }
 

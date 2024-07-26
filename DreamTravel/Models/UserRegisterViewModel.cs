@@ -15,7 +15,7 @@ namespace DreamTravel.Models
 
         [Required(ErrorMessage = "Boş Bırakılamaz")]
         [RegularExpression(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", ErrorMessage = "Geçerli bir mail adresi giriniz.")]
-
+        [EmailAddress]
         public string Mail { get; set; }
 
         //[Required(ErrorMessage = "Boş Bırakılamaz")]
