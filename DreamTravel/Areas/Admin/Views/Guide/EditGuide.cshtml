@@ -1,12 +1,12 @@
 ﻿@model EntityLayer.Concrete.Guide
 @{
-    ViewData["Title"] = "AddGuide";
+    ViewData["Title"] = "EditGuide";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="card mb-4">
     <form method="post">
-        <h5 class="card-header text-primary">Yeni Tur Rehberi Girişi</h5>
+        <h5 class="card-header text-primary">@ViewBag.Name Adlı Rehberin Bilgileri</h5>
         <div class="card-body demo-vertical-spacing demo-only-element">
             <div class="input-group">
                 <span class="input-group-text" id="basic-addon11">Rehber Ad Soyad*<span asp-validation-for="Name" class="text-danger font-weight-bolder"></span> </span>
@@ -30,7 +30,7 @@
 
             <input asp-for="GuideID" type="hidden" readonly="readonly" />
 
-            <button class="btn btn-outline-primary">Ekle</button>
+            <button class="btn btn-outline-primary">Kaydet</button>
         </div>
     </form>
 </div>

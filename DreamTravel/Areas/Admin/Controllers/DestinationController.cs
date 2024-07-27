@@ -52,8 +52,9 @@ namespace DreamTravel.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult UpdateDestination(Destination p)
         {
+            p.Status = true;
             _destinationService.Update(p);
-            return RedirectToAction("Index");
+            return Redirect("/Admin/Destination/Index/");
         }
         public IActionResult ChangeDestinationStatus(int id)
         {

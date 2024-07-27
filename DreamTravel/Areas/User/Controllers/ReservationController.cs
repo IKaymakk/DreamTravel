@@ -48,7 +48,7 @@ namespace DreamTravel.Areas.User.Controllers
             var list = rm.GetListReservationWithDestination(values.Id);
             return View(list);
         }
-        public async Task<IActionResult> PendingApprovalReservation()
+        public IActionResult PendingApprovalReservation()
         {
             return View();
         }
