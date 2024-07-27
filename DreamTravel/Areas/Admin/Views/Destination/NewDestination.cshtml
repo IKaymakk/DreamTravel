@@ -5,39 +5,40 @@
 }
 
 
+
 <div class="card mb-4">
     <form method="post">
         <h5 class="card-header text-primary">Yeni Tur Girişi</h5>
         <div class="card-body demo-vertical-spacing demo-only-element">
 
             <div class="input-group">
-                <span class="input-group-text" id="basic-addon11">Rota Adı*</span>
+                <span class="input-group-text" id="basic-addon11">Rota Adı*<span asp-validation-for="City" class="text-danger font-weight-bolder"></span></span>
                 <input asp-for="City" type="text" class="form-control" placeholder="Türkiye / Antalya" aria-label="Username" aria-describedby="basic-addon11" />
             </div>
 
             <div class="input-group">
-                <span class="input-group-text" id="basic-addon11">Süre*</span>
+                <span class="input-group-text" id="basic-addon11">Süre*<span asp-validation-for="DayNight" class="text-danger font-weight-bolder"></span></span>
                 <input asp-for="DayNight" type="text" class="form-control" placeholder="4 Gece / 5 Gün" aria-label="Username" aria-describedby="basic-addon11" />
             </div>
 
             <div class="input-group">
-                <span class="input-group-text" id="basic-addon11">Kapasite*</span>
-                <input asp-for="Capacity" type="text" class="form-control" placeholder="50" aria-label="Username" aria-describedby="basic-addon11" />
+                <span class="input-group-text" id="basic-addon11">Kapasite*<span asp-validation-for="Capacity" class="text-danger font-weight-bolder"></span></span>
+                <input asp-for="Capacity" type="number" class="form-control" placeholder="50" aria-label="Username" aria-describedby="basic-addon11" />
             </div>
 
             <div class="input-group">
-                <span class="input-group-text" id="basic-addon11">Resim*</span>
+                <span class="input-group-text" id="basic-addon11">Resim*<span asp-validation-for="Image" class="text-danger font-weight-bolder"></span></span>
                 <input asp-for="Image" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon11" />
             </div>
 
             <div class="input-group">
-                <span class="input-group-text">$*</span>
-                <input asp-for="Price" type="text" class="form-control" placeholder="Fiyat Girin" aria-label="Amount (to the nearest dollar)" />
+                <span class="input-group-text">$*<span asp-validation-for="Price" class="text-danger font-weight-bolder"></span></span>
+                <input asp-for="Price" type="number" class="form-control" placeholder="Fiyat Girin" aria-label="Amount (to the nearest dollar)" />
                 <span class="input-group-text">.0</span>
             </div>
 
             <div class="input-group">
-                <span class="input-group-text">Açıklama*</span>
+                <span class="input-group-text">Açıklama*<span asp-validation-for="Description" class="text-danger font-weight-bolder"></span></span>
                 <textarea asp-for="Description" class="form-control" aria-label="With textarea" placeholder="..."></textarea>
             </div>
             <button class="btn btn-outline-primary">Ekle</button>
@@ -105,3 +106,4 @@
         </div>
     </form>
 </div>
+

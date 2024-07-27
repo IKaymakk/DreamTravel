@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<button type="button" id="btngetlist" class="btn btn-outline-info">Tur Listesi</button>
+<button type="button" class="btn btn-outline-success" id="btnaddtour">Tur Ekle</button>
+<button type="button" id="btngetbyid" class="btn btn-outline-primary">Tur Getir</button>
+
+<br />
+<div id="citylist">
+</div>
+
+<br />
+<div >
+    <input type="text" id="txtid" placeholder="Şehir ID değerini giriniz" class="form-control" /><br />
+</div>
+
+<div id="destinationlistbyid">
+</div>
+
+<div>
+    <input type="text" id="txtcity" placeholder="Tur Adı Girin" class="form-control" /><br />
+    <input type="text" id="txtdaynight" placeholder="Tur Süresini Girin" class="form-control" /><br />
+    <input type="text" id="txtcapacity" placeholder="Kontenjan Girin" class="form-control" /><br />
+    <input type="text" id="txtprice" placeholder="Fiyat Girin" class="form-control" /><br />
+</div>
+
+
+
+
+
+<script>
+    $("#btngetlist").click(function () {
+        $.ajax({
+            contentType: "application/json",
+            dataType: "json",
+            type: "GET",
+            url: "/Admin/Tour/TourList/",
+            success: function (func) {
+                let w = jQuery.parseJSON(func);
+                console.log(w);
+                let tablehtml = "<table class=table table-bordered> <tr><th> Tur Adı </th><th> Tur Kapasitesi </th><th> Tur Fiyatı</th><th> Tur Süresi </th></tr>";
+                $.each(w, (index, value) => {
+                    tablehtml += `<tr><td>${value.City}</td><td>${value.Capacity}</td><td>${value.Price}</td><td>${value.DayNight}</tr>`;
+                });
+                tablehtml += "</table>";
+                $("#citylist").html(tablehtml);
+            }
+        });
+    });
+
+    $("#btnaddtour").click(function () {
+        let tourvalues = {
+            City: $("#txtcity").val(),
+            DayNight: $("#txtdaynight").val(),
+            Capacity: $("#txtcapacity").val(),
+            Price: $("#txtprice").val()
+        };
+
+        $.ajax({
+            type: "post",
+            url: "/Admin/Tour/AddTour/",
+            data: tourvalues,
+            success: function (func) {
+                let result = jQuery.parseJSON(func);
+                alert("Tur Sisteme Eklendi")
+            }
+        });
+    });
+
+    $("#btngetbyid").click(x => {
+        let id = $("#txtid").val();
+
+        $.ajax({
+            contentType: "application/json",
+            dataType: "json",
+            type: "Get",
+            url: "/Admin/Tour/GetById/",
+            data: { DestinationID: id },
+            success: function (fun2) {
+                let result = jQuery.parseJSON(fun2);
+                console.log(result);
+                let htmlstr = `<table class=table table-bordered><tr><th>Tur Adı</th><th>Kapasite</th><th>Fiyatı</th><th>Tur Süresi</th></tr><tr><td>${result.City}</td><td>${result.Capacity}</td><td>${result.Price}</td><td>${result.DayNight}</td></tr></table>`;
+                $("#destinationlistbyid").html(htmlstr);
+            }
+        });
+    });
+
+</script>
+

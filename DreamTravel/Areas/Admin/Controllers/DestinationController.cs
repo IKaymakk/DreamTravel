@@ -1,7 +1,9 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +14,7 @@ namespace DreamTravel.Areas.Admin.Controllers
     public class DestinationController : Controller
     {
         private readonly IDestinationService _destinationService;
-
+        DestinatonValidator dv = new DestinatonValidator();
         public DestinationController(IDestinationService destinationService)
         {
             _destinationService = destinationService;
@@ -32,9 +34,20 @@ namespace DreamTravel.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult NewDestination(Destination P)
         {
-            P.Status = true;
-            _destinationService.Insert(P);
-            return RedirectToAction("Index");
+            ValidationResult result = dv.Validate(P);
+            if (result.IsValid)
+            {
+                P.Status = true;
+                _destinationService.Insert(P);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var x in result.Errors)
+                    ModelState.AddModelError(x.PropertyName, x.ErrorMessage);
+            }
+            return View();
+
         }
         public IActionResult DeleteDestination(int id)
         {

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DreamTravel.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("Admin/[controller]/[action]/{id?}")]
     [AllowAnonymous]
     public class GuideController : Controller
     {
@@ -72,7 +73,7 @@ namespace DreamTravel.Areas.Admin.Controllers
             {
                 P.Status = true;
                 _guideService.Update(P);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Guide", new { area = "Admin" });
             }
             else
             {
