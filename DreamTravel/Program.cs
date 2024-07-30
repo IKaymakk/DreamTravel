@@ -1,11 +1,16 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using BusinessLayer.Container;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using DreamTravel.Models;
+using DTOLayer.DTOs.AnnouncementDTOs;
+using DTOLayer.DTOs.AppUserDTOs;
 using EntityLayer.Concrete;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Options;
@@ -27,6 +32,11 @@ namespace DreamTravel
             //    x.AddDebug();
             //});
 
+
+
+            builder.Services.AddAutoMapper(typeof(Program));
+
+
             builder.Services.AddDbContext<Context>();
 
             builder.Services.AddIdentity<AppUser, AppRole>(_ =>
@@ -41,9 +51,10 @@ namespace DreamTravel
             .AddErrorDescriber<CustomIdentityValidator>();
 
             builder.Services.ContainerDependencies();
+            builder.Services.CustomValidator();
 
-            builder.Services.AddControllersWithViews();
-         
+            builder.Services.AddControllersWithViews().AddFluentValidation();
+
             builder.Services.AddMvc(config =>
             {
                 var policy = new AuthorizationPolicyBuilder().
@@ -51,8 +62,8 @@ namespace DreamTravel
                 Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
-            
-            
+
+
             //////////////////////////////////////////////////
             var app = builder.Build();
 

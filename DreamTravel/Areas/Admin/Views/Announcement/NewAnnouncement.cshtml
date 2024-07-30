@@ -1,0 +1,24 @@
+﻿@model DTOLayer.DTOs.AnnouncementDTOs.AnnouncementAddDTO
+@{
+    ViewData["Title"] = "NewAnnouncement";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card mb-4">
+    <form method="post">
+        <h5 class="card-header text-primary">Yeni Duyuru Ekle</h5>
+        <div class="card-body demo-vertical-spacing demo-only-element">
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">Duyuru Başlığı *<span asp-validation-for="Title" class="text-danger font-weight-bolder"></span> </span>
+                <input asp-for="Title" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon11">Duyuru İçeriği *<span asp-validation-for="Content" class="text-danger font-weight-bolder"></span></span>
+                <input asp-for="Content" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon11" />
+            </div>
+            <button class="btn btn-outline-primary">Duyuru Ekle</button>
+        </div>
+    </form>
+</div>
+

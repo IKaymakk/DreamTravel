@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DTOLayer.DTOs.AppUserDTOs
 {
-    public class AppUserDTOs
+    public class AppUserRegisterDTOs
     {
         [Required(ErrorMessage = "Boş Bırakılamaz")]
         [MinLength(3, ErrorMessage = "En Az 3 KarakterGirin")]

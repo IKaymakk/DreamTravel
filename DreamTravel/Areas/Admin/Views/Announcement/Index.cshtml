@@ -1,0 +1,54 @@
+﻿@model List<DTOLayer.DTOs.AnnouncementDTOs.AnnouncementListDTO>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <h4 class="card-header">Duyurular</h4>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="text-secondary opacity-7">#</th>
+                    <th class="text-secondary opacity-7">Duyuru Başlığı</th>
+                    <th class="text-secondary opacity-7">Duyuru İçeriği</th>
+                    <th class="text-secondary opacity-7">Detaylar</th>
+                    <th class="text-secondary opacity-7">Sil</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@x.AnnouncementID</p>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@x.Title</p>
+                        </td>
+                        <td>
+                            @if (x.Content.Length > 60)
+                            {
+                                <p class="text-xs font-weight-bold mb-0">@x.Content.Substring(0,59)...</p>
+                            }
+                            else
+                            {
+                                <p class="text-xs font-weight-bold mb-0">@x.Content</p>
+                            }
+                        </td>
+
+                        <td class=" text-center">
+                            <a class="text-primary" href=""><i class="bx bx-detail me-1"></i></a>
+                        </td>
+                        <td>
+                            <a class="text-danger" href=""><i class="bx bx-trash me-1"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <a class="btn btn-outline-primary" href="/Admin/Announcement/NewAnnouncement">Yeni Duyuru Ekle</a>
+</div>
+
