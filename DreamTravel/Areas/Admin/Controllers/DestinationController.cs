@@ -19,7 +19,7 @@ namespace DreamTravel.Areas.Admin.Controllers
         {
             _destinationService = destinationService;
         }
-
+         
         public IActionResult Index()
         {
             var values = _destinationService.GetListAll();

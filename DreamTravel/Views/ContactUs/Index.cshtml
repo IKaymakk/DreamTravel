@@ -1,0 +1,61 @@
+﻿@model List<ContactUs>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <h4 class="card-header">İletişim Mesajları</h4>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="text-secondary opacity-7">#</th>
+                    <th class="text-secondary opacity-7">Mesajı Gönderen</th>
+                    <th class="text-secondary opacity-7">Konu</th>
+                    <th class="text-secondary opacity-7">Mail Adresi</th>
+                    <th class="text-secondary opacity-7">Tarih</th>
+                    <th class="text-secondary opacity-7">Sil</th>
+                    <th class="text-secondary opacity-7">Detaylar</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@x.ContactUsId</p>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@x.Name</p>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@x.Subject</p>
+                        </td>
+                        <td>
+                            @if (x.Content.Length > 30)
+                            {
+                                <p class="text-xs font-weight-bold mb-0">@x.Content.Substring(0,29)...</p>
+                            }
+                            else
+                            {
+                                <p class="text-xs font-weight-bold mb-0">@x.Content</p>
+                            }
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0">@x.ContactUsDate.ToShortDateString()</p>
+                        </td>
+                        <td>
+                            <a class="text-danger" href="/ContactUs/ChangeStatus/@x.ContactUsId"><i class="bx bx-trash me-1"></i></a>
+                        </td>
+                        <td class=" text-center">
+                            <a class="text-primary" href="/ContactUs/ContactUsMessageDetail/@x.ContactUsId"><i class="bx bx-detail me-1"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
