@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -7,10 +8,16 @@ namespace DreamTravel.ViewComponents.Default
 {
     public class _PopularDestinationsPartial : ViewComponent
     {
-        DestinationManager manager = new DestinationManager(new EfDestinationDal());
+        private readonly IDestinationService _manager;
+
+        public _PopularDestinationsPartial(IDestinationService manager)
+        {
+            _manager = manager;
+        }
+
         public IViewComponentResult Invoke()
         {
-            var values = manager.GetListAll();
+            var values = _manager.GetListAll();
             return View(values);
         }
     }

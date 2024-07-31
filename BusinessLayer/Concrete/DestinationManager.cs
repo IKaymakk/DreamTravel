@@ -16,9 +16,10 @@ namespace BusinessLayer.Concrete
         IDestinationDal _dal;
         private readonly Context _context;
 
-        public DestinationManager(IDestinationDal dal)
+        public DestinationManager(IDestinationDal dal, Context context)
         {
             _dal = dal;
+            _context = context;
         }
 
         public void Delete(Destination t)
@@ -36,10 +37,7 @@ namespace BusinessLayer.Concrete
             return _dal.GetAll();
         }
 
-        //public float GetTotalPrice()
-        //{
-        //    return (float)_context.Destinations.Sum(d => d.Price);
-        //}
+
 
         public void Insert(Destination t)
         {
@@ -64,6 +62,13 @@ namespace BusinessLayer.Concrete
                 value.Status = true;
                 _dal.Update(value);
             }
+        }
+
+        public float GetTotalPrice()
+        {
+            return (float)_context.Reservations
+                .Where(r => r.Destination.Status == true) // Sadece aktif olan destinasyonlar
+                .Sum(r => r.Destination.Price); // Her rezervasyonun destinasyon fiyatını toplar
         }
     }
 }

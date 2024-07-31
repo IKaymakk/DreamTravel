@@ -10,5 +10,7 @@ namespace BusinessLayer.Abstract
     public interface IDestinationService : IGenericService<Destination>
     {
         void ChangeDestinationStatus(int id);
+        float GetTotalPrice();
+
     }
 }

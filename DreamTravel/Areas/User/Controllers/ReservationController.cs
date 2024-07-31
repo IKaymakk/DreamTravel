@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
@@ -10,20 +11,21 @@ namespace DreamTravel.Areas.User.Controllers
     [Area("User")]
     public class ReservationController : Controller
     {
-        DestinationManager dm = new DestinationManager(new EfDestinationDal());
+        private readonly IDestinationService _manager;
         ReservationManager rm = new ReservationManager(new EfReservationDal());
 
         private readonly UserManager<AppUser> _userManager;
 
-        public ReservationController(UserManager<AppUser> userManager)
+        public ReservationController(UserManager<AppUser> userManager, IDestinationService manager)
         {
             _userManager = userManager;
+            _manager = manager;
         }
 
         [HttpGet]
         public IActionResult NewReservation()
         {
-            List<SelectListItem> values = (from x in dm.GetListAll()
+            List<SelectListItem> values = (from x in _manager.GetListAll()
                                            select new SelectListItem
                                            {
                                                Text = x.City,

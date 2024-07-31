@@ -7,12 +7,17 @@ namespace DreamTravel.ViewComponents.AdminDashboard
 {
     public class _Cards2Statistics : ViewComponent
     {
-        DestinationManager manager = new DestinationManager(new EfDestinationDal());
+        private readonly IDestinationService _manager;
+
+        public _Cards2Statistics(IDestinationService manager)
+        {
+            _manager = manager;
+        }
 
         public IViewComponentResult Invoke()
         {
-            //var totalPrice = manager.GetTotalPrice();
-            //ViewBag.TotalPrice = totalPrice;
+            var totalPrice = _manager.GetTotalPrice();
+            ViewBag.TotalPrice = totalPrice;
             return View();
         }
     }
