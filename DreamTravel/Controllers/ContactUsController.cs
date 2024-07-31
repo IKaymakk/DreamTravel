@@ -24,5 +24,6 @@ namespace DreamTravel.Controllers
             _contactUsService.TChangeMessageStatus(id);
             return RedirectToAction("Index");
         }
+      
     }
 }

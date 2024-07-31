@@ -11,6 +11,8 @@ namespace BusinessLayer.Abstract
     {
         void ChangeDestinationStatus(int id);
         float GetTotalPrice();
+        float GetTotalPriceCurrentMonth();
+        float GetTotalPriceJanuary();
 
     }
 }

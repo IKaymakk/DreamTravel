@@ -14,7 +14,19 @@ namespace DataAccessLayer.EntityFramework
     {
         public void ChangeMessageStatus(int id)
         {
-            throw new NotImplementedException();
+            var value = this.GetById(id);
+            if (value != null)
+            {
+                if (value.Status == true)
+                {
+                    value.Status = false;
+                }
+                else
+                {
+                    value.Status = true;
+                }
+                this.Update(value);
+            }
         }
 
         public List<ContactUs> FalseMessageList()

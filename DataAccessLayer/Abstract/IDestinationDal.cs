@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IDestinationDal:IGenericDal<Destination>
+    public interface IDestinationDal : IGenericDal<Destination>
     {
+        float GetTotalPrice();
+        float GetTotalPriceJanuary();
+        float GetTotalPriceCurrentMonth();
+        void ChangeDestinationStatus(int id);
     }
 }

@@ -51,24 +51,22 @@ namespace BusinessLayer.Concrete
 
         public void ChangeDestinationStatus(int id)
         {
-            var value = _dal.GetById(id);
-            if (value.Status == true)
-            {
-                value.Status = false;
-                _dal.Update(value);
-            }
-            else
-            {
-                value.Status = true;
-                _dal.Update(value);
-            }
+            _dal.ChangeDestinationStatus(id);
         }
 
         public float GetTotalPrice()
         {
-            return (float)_context.Reservations
-                .Where(r => r.Destination.Status == true) // Sadece aktif olan destinasyonlar
-                .Sum(r => r.Destination.Price); // Her rezervasyonun destinasyon fiyatını toplar
+            return _dal.GetTotalPrice();
+        }
+
+        public float GetTotalPriceCurrentMonth()
+        {
+            return _dal.GetTotalPriceCurrentMonth();
+        }
+
+        public float GetTotalPriceJanuary()
+        {
+            return _dal.GetTotalPriceJanuary();
         }
     }
 }

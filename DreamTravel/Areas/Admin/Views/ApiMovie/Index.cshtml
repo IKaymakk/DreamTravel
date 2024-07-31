@@ -1,0 +1,38 @@
+﻿@model List<ApiMovieViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Api Movie List</h1>
+<br />
+<table class="table table-striped table-bordered">
+    <tr>
+        <th class="text-center">#</th>
+        <th class="text-center">Görsel</th>
+        <th class="text-center">Film Adı</th>
+        <th class="text-center">Puanı</th>
+        <th class="text-center">Çıkış Yılı</th>
+        <th class="text-center">Fragman</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.rank</td>
+            <td>
+                <img class="rounded" src="@item.image" width="100" height="150" />
+            </td>
+            <td class="text-center" style="zoom: 90%;"><b>@item.title</b></td>
+            <td class="text-center">@item.rating</td>
+            <td class="text-center">@item.year</td>
+            <td>
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#youTubeModal" data-thevideo="@item.trailer">
+                    <i class='bx bx-movie-play'></i> &nbsp;
+                    Fragman
+                </button>
+            </td>
+        </tr>
+      
+    }
+    </table>

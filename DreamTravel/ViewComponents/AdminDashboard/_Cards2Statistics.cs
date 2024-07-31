@@ -17,7 +17,11 @@ namespace DreamTravel.ViewComponents.AdminDashboard
         public IViewComponentResult Invoke()
         {
             var totalPrice = _manager.GetTotalPrice();
+            var totalPriceCurrentMonth = _manager.GetTotalPriceCurrentMonth();
+            var totalPriceJanuary = _manager.GetTotalPriceJanuary();
             ViewBag.TotalPrice = totalPrice;
+            ViewBag.TotalPriceCurrentMonth = totalPriceCurrentMonth;
+            ViewBag.TotalPriceJanuary = totalPriceJanuary;
             return View();
         }
     }

@@ -20,7 +20,7 @@ namespace BusinessLayer.Concrete
 
         public void Delete(ContactUs t)
         {
-            throw new NotImplementedException();
+            _contactUsDal.Delete(t);
         }
 
         public ContactUs GetById(int id)
@@ -40,17 +40,7 @@ namespace BusinessLayer.Concrete
 
         public void TChangeMessageStatus(int id)
         {
-            var value = _contactUsDal.GetById(id);
-            if (value.Status == true)
-            {
-                value.Status = false;
-                _contactUsDal.Update(value);
-            }
-            else
-            {
-                value.Status = true;
-                _contactUsDal.Update(value);
-            }
+            _contactUsDal.ChangeMessageStatus(id);
         }
 
         public List<ContactUs> TFalseMessageList()
