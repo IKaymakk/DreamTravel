@@ -10,16 +10,15 @@ namespace DreamTravel.Mapping.AutoMapperProfile
     {
         public MapProfile()
         {
-            CreateMap<AnnouncementAddDTO, Announcement>();
-            CreateMap<Announcement, AnnouncementAddDTO>();
+            CreateMap<AnnouncementAddDTO, Announcement>().ReverseMap();
 
-            CreateMap<AppUserRegisterDTOs, AppUser>();
-            CreateMap<AppUser, AppUserRegisterDTOs>();
+            CreateMap<AppUserRegisterDTOs, Announcement>().ReverseMap();
 
-            CreateMap<AppUserLoginDTOs, AppUser>();
-            CreateMap<AppUser, AppUserLoginDTOs>();
+            CreateMap<AppUserLoginDTOs, Announcement>().ReverseMap();
 
             CreateMap<AnnouncementListDTO, Announcement>().ReverseMap();
+
+            CreateMap<AnnouncementUpdateDTO, Announcement>().ReverseMap();
 
         }
     }

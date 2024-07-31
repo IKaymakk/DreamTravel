@@ -49,5 +49,34 @@ namespace DreamTravel.Areas.Admin.Controllers
             }
             return View(model);
         }
+        public IActionResult DeleteAnnouncement(int id)
+        {
+            var values = _announcementManager.GetById(id);
+            _announcementManager.Delete(values);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult UpdateAnnouncement(int id)
+        {
+            var values = _mapper.Map<AnnouncementUpdateDTO>(_announcementManager.GetById(id));
+            ViewBag.No = values.AnnouncementID;
+            return View(values);
+        }
+        [HttpPost]
+        public IActionResult UpdateAnnouncement(AnnouncementUpdateDTO model)
+        {
+            if (ModelState.IsValid)
+            {
+                _announcementManager.Update(new Announcement
+                {
+                    AnnouncementID = model.AnnouncementID,
+                    Content = model.Content,
+                    Title = model.Title,
+                    Date = Convert.ToDateTime(DateTime.Now.ToShortDateString())
+                }) ;
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
     }
 }

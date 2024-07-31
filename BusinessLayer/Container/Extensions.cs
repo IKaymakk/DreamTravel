@@ -46,6 +46,8 @@ namespace BusinessLayer.Container
         public static void CustomValidator(this IServiceCollection services)
         {
             services.AddTransient<IValidator<AnnouncementAddDTO>, AnnouncementValidator>();
+            services.AddTransient<IValidator<AnnouncementUpdateDTO>, AnnouncementUpdateValidator>();
+
         }
     }
 }

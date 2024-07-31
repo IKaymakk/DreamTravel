@@ -32,10 +32,9 @@ namespace DreamTravel
             //    x.AddDebug();
             //});
 
-
+            builder.Services.AddHttpClient();
 
             builder.Services.AddAutoMapper(typeof(Program));
-
 
             builder.Services.AddDbContext<Context>();
 
@@ -47,10 +46,10 @@ namespace DreamTravel
                 _.Password.RequireLowercase = false;
                 _.Password.RequireUppercase = false;
                 _.Password.RequireDigit = false;
-            }).AddEntityFrameworkStores<Context>()
-            .AddErrorDescriber<CustomIdentityValidator>();
+            }).AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>();
 
             builder.Services.ContainerDependencies();
+
             builder.Services.CustomValidator();
 
             builder.Services.AddControllersWithViews().AddFluentValidation();
