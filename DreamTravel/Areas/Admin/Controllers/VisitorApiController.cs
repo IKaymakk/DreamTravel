@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
-namespace DreamTravel.Areas.Admin
+namespace DreamTravel.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [AllowAnonymous]
@@ -82,7 +82,7 @@ namespace DreamTravel.Areas.Admin
             var jsonData = JsonConvert.SerializeObject(p);
             StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PutAsync("http://localhost:5032/api/Visitor", content);
-          
+
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");

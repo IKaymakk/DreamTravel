@@ -19,6 +19,7 @@ namespace BusinessLayer.Container
     {
         public static void ContainerDependencies(this IServiceCollection services)
         {
+
             services.AddScoped<ICommentService, CommentManager>();
             services.AddScoped<ICommentDal, EfCommentDal>();
 

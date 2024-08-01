@@ -5,6 +5,8 @@ using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using DreamTravel.CQRS.Handlers.DestinationHandlers;
 using DreamTravel.Models;
 using DTOLayer.DTOs.AnnouncementDTOs;
 using DTOLayer.DTOs.AppUserDTOs;
@@ -31,6 +33,7 @@ namespace DreamTravel
             //    x.SetMinimumLevel(LogLevel.Debug);
             //    x.AddDebug();
             //});
+            builder.Services.AddScoped<GetAllDestinationQueryHandler>();
 
             builder.Services.AddHttpClient();
 
