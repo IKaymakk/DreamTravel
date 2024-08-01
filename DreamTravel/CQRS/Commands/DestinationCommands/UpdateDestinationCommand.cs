@@ -1,6 +1,6 @@
-﻿namespace DreamTravel.CQRS.Results.DestinationResults
+﻿namespace DreamTravel.CQRS.Commands.DestinationCommands
 {
-    public class GetDestinationByIDQueryResult
+    public class UpdateDestinationCommand
     {
         public int? destinationid { get; set; }
         public string? city { get; set; }

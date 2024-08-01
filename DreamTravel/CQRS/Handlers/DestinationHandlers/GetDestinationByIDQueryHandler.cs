@@ -19,7 +19,8 @@ namespace DreamTravel.CQRS.Handlers.DestinationHandlers
             {
                 destinationid = values.DestinationID,
                 city = values.City,
-                duration = values.DayNight
+                duration = values.DayNight,
+                price = values.Price
             };
         }
     }
