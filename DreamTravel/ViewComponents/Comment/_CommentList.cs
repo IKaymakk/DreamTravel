@@ -10,9 +10,8 @@ namespace DreamTravel.ViewComponents.Destination
         CommentManager manager = new CommentManager(new EfCommentDal());
         public IViewComponentResult Invoke(int id)
         {
-            using var c = new Context();
-            var values = manager.GetAll(id);
-            ViewBag.commentCount = c.Comments.Count(x => x.DestinationID == id);
+            var values = manager.TGetListCommentWithDestinationAndUser(id);
+            ViewBag.commentCount = values.Count();
             return View(values);
         }
     }

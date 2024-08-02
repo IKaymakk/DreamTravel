@@ -1,0 +1,17 @@
+﻿@model GetGuideByIdQueryResult
+@{
+    ViewData["Title"] = "GetGuide";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form  method="post">
+    <label>Rehber Adı</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <br />
+    <label>Rehber Açıklaması</label>
+    <input type="text" asp-for="Description" class="form-control" />
+    <br />
+    <button class="btn btn-primary">Güncelle</button>
+    <input type="hidden" readonly="readonly" asp-for="GuideID" class="form-control" />
+</form>
+

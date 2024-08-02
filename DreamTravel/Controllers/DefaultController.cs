@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DreamTravel.Controllers
 {
-    //[AllowAnonymous]
+    [AllowAnonymous]
     public class DefaultController : Controller
     {
         public IActionResult Index()

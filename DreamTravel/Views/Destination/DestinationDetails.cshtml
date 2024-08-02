@@ -6,7 +6,6 @@
 
 <!doctype html>
 <html lang="zxx">
-
 <body>
     <!-- about breadcrumb -->
     <section class="w3l-about-breadcrumb text-left">
@@ -132,7 +131,7 @@
                     </div>
 
                     <!--//author-card-->
-                    <div class="author-card mt-5">
+                  @*  <div class="author-card mt-5">
                         <div class="row align-items-center">
                             <div class="col-sm-3 col-6">
                                 <div>
@@ -184,7 +183,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                     <!--//author-card-->
                     @await Component.InvokeAsync("_CommentList", new { id = ViewBag.i })
                     <partial name="~/Views/Comment/AddComment.cshtml" />

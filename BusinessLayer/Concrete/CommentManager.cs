@@ -29,10 +29,10 @@ namespace BusinessLayer.Concrete
             return _dal.AdminCommentList();
         }
 
-        public List<Comment> GetAll(int id)
-        {
-            return _dal.GetAllByFilter(x => x.DestinationID == id);
-        }
+        //public List<Comment> GetAll(int id)
+        //{
+        //    return _dal.GetAllByFilter(x => x.DestinationID == id);
+        //}
 
         public Comment GetById(int id)
         {
@@ -48,6 +48,11 @@ namespace BusinessLayer.Concrete
         {
             _dal.Add(t);
         }
+
+        public List<Comment> TGetListCommentWithDestinationAndUser(int id)
+        {
+            return _dal.GetListCommentWithDestinationAndUser(id);
+         }
 
         public void Update(Comment t)
         {

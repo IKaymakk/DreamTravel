@@ -9,11 +9,17 @@
         <input type="hidden" name="AppUserID" value="" />*@
 
         <div class="form-group">
-            <input name="CommentUser" class="form-control" placeholder="Adınız" />
-            <br />
+@*            <input name="CommentUser" class="form-control" placeholder="Adınız" />
+*@            <br />
             <textarea name="CommentContent" class="form-control" placeholder="Yorumunuz*" required="" spellcheck="false"></textarea>
-            <input type="hidden" name="DestinationID" value="@ViewBag.i" />
+            
+            
+            
+            
+            
+            <input type="hidden" readonly="readonly" name="DestinationID" value="@ViewBag.i" />
         </div>
+
         <div class="submit text-right">
             <button class="btn btn-style btn-primary" type="submit" id="btnsave">Yorum Yap</button>
         </div>
