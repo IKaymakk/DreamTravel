@@ -1,0 +1,16 @@
+﻿@model String
+
+@if (ViewBag.SendMessageFailed != null)
+{
+
+    <div class="text-center font-weight-bolder @ViewBag.SendMessageFailed">
+        @Model
+    </div>
+}
+else
+{
+    <div class="text-center font-weight-bolder alert alert-success">
+        @Model
+    </div>
+}
+

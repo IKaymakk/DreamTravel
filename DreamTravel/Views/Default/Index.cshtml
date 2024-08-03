@@ -2,6 +2,13 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UILayout.cshtml";
 }
+@if (TempData["Message"] != null)
+{
+    @section message
+    {
+    @await Html.PartialAsync("_message", (string)TempData["Message"] )
+    }
+}
 @await Component.InvokeAsync("_SliderPartial")
 @await Component.InvokeAsync("_PopularDestinationsPartial")
 @await Component.InvokeAsync("_Statistics")

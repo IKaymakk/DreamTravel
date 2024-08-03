@@ -14,6 +14,7 @@ using EntityLayer.Concrete;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Options;
@@ -73,7 +74,12 @@ namespace DreamTravel
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
-
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+         .AddCookie(options =>
+          {
+              // Giriþ yapýlmamýþ kullanýcýlarý yönlendirecek sayfa
+              options.LoginPath = "/Login/SignIn";
+          });
             //////////////////////////////////////////////////
             var app = builder.Build();
 

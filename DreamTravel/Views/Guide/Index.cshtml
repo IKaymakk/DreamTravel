@@ -1,0 +1,43 @@
+﻿@model List<Guide>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+<br />
+<section class="w3l-team" id="team">
+    <div class="team-block py-5">
+        <div class="container py-lg-5">
+            <div class="title-content text-center mb-lg-3 mb-4">
+                <h6 class="sub-title">Yol Arkadaşlarınız</h6>
+                <h3 class="hny-title">Tur Rehberlerimizle Tanışın</h3>
+            </div>
+            <div class="row">
+                @foreach (var x in Model)
+                {
+                    <div class="col-lg-3 col-6 mt-lg-5 mt-4">
+                        <div class="box16">
+                            <a href="#url"><img src="@x.Image" style="width:267px;height:330px" class="img-fluid" /></a>
+                            <div class="box-content">
+                                <br>
+                                <h3 class="title"><a href="#url">@x.Name</a></h3>
+                                <ul class="social">
+                                    <li>
+                                        @if (x.Description.Length > 110)
+                                        {
+
+                                            <span class="post">@x.Description.Substring(0,109)...</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="post">@x.Description</span>
+                                        }
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

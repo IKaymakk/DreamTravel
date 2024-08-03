@@ -35,7 +35,7 @@ namespace BusinessLayer.Concrete
 
         public void Insert(ContactUs t)
         {
-            throw new NotImplementedException();
+            _contactUsDal.Add(t);
         }
 
         public void TChangeMessageStatus(int id)
