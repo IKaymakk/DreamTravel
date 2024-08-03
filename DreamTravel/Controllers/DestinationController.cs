@@ -28,10 +28,16 @@ namespace DreamTravel.Controllers
         }
         public async Task<IActionResult> DestinationDetails(int id)
         {
-            var value = await _userManager.FindByNameAsync(User.Identity.Name);
-            ViewBag.UserId = value.Id;
             ViewBag.i = id;
             var did = _manager.GetById(id);
+            if (User.Identity.IsAuthenticated)
+            {
+                var value = await _userManager.FindByNameAsync(User.Identity.Name);
+                if (value != null)
+                {
+                    ViewBag.UserId = value.Id;
+                }
+            }
             return View(did);
         }
     }

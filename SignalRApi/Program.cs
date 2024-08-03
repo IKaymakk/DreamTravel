@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using SignalRApi.DAL;
+using System.Security.Cryptography.X509Certificates;
+
 namespace SignalRApi
 {
     public class Program
@@ -8,10 +12,13 @@ namespace SignalRApi
 
             // Add services to the container.
 
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddEntityFrameworkNpgsql().AddDbContext<Context>(opt =>
+           opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
@@ -23,7 +30,6 @@ namespace SignalRApi
             }
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

@@ -10,5 +10,9 @@
     }
     public class Visitor
     {
+        public int VisitorId { get; set; }
+        public ECity City { get; set; }
+        public int CityVisitCount { get; set; }
+        public DateTime VisitDate { get; set; }
     }
 }
