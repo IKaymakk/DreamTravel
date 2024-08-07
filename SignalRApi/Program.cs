@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SignalRApi.DAL;
+using SignalRApi.Model;
 using System.Security.Cryptography.X509Certificates;
 
 namespace SignalRApi
@@ -12,7 +13,8 @@ namespace SignalRApi
 
             // Add services to the container.
 
-
+            builder.Services.AddScoped<VisitorService>();
+            builder.Services.AddSignalR();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

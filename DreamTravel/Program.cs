@@ -74,12 +74,11 @@ namespace DreamTravel
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
-            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-         .AddCookie(options =>
-          {
-              // Giriþ yapýlmamýþ kullanýcýlarý yönlendirecek sayfa
-              options.LoginPath = "/Login/SignIn";
-          });
+
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Login/SignIn";
+            });
             //////////////////////////////////////////////////
             var app = builder.Build();
 
@@ -93,9 +92,8 @@ namespace DreamTravel
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseAuthentication();
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             //app.MapControllerRoute(

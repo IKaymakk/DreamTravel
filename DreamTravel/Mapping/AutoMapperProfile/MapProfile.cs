@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DTOLayer.DTOs.AdminDTOs;
 using DTOLayer.DTOs.AnnouncementDTOs;
 using DTOLayer.DTOs.AppUserDTOs;
 using DTOLayer.DTOs.ContactDTOs;
@@ -22,6 +23,7 @@ namespace DreamTravel.Mapping.AutoMapperProfile
             CreateMap<AnnouncementUpdateDTO, Announcement>().ReverseMap();
            
             CreateMap<SendMessageDto, ContactUs>().ReverseMap();
+            CreateMap<CreateRoleDto, AppRole>().ReverseMap();
 
         }
     }

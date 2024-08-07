@@ -1,0 +1,68 @@
+﻿@model List<AppRole>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int sayac = 0;
+}
+
+<script>
+    function clicked(e) {
+        if (!confirm('Silmek istediğinden emin misin?')) {
+            e.preventDefault();
+        }
+    }
+</script>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+
+@if (Model.Count > 0)
+{
+    <div class="card">
+        <h4 class="card-header">Rol Listesi<a class="btn btn-primary" style="margin-left:61.6em" href="/Admin/Role/CreateRole">Yeni Rol Ekle</a></h4>
+        <div class="table-responsive text-nowrap">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="color:black">#</th>
+                        <th class="text-secondary opacity-7">Rol</th>
+                        <th class="text-secondary opacity-7">Güncelle</th>
+                        <th class="text-secondary opacity-7">Sil</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+
+
+                    @foreach (var x in Model)
+                    {
+                        sayac += 1;
+                        <tr>
+                            <td>
+                                <p style="color:black" class="text-xs font-weight-bolder mb-0">@sayac</p>
+                            </td>
+
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0">@x.Name</p>
+                            </td>
+
+                            <td>
+                                <a href="/Admin/Role/UpdateRole/@x.Id" class="btn btn-outline-primary">Güncelle</a>
+                            </td>
+                            <td>
+                                <a onclick="return confirm('Silmek istediğinden emin misin?')" class="text-danger" href="/Admin/Role/DeleteRole/@x.Id"><i class="bx bx-trash me-1"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <h3 class="alert alert-warning text-center">Herhangi Bir Rol Yok</h3>
+    <br />
+    <a href="/Admin/Role/CreateRole" class="btn btn-outline-primary">Rol Ekle</a>
+}
