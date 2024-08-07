@@ -13,5 +13,6 @@ namespace DataAccessLayer.Abstract
         float GetTotalPriceJanuary();
         float GetTotalPriceCurrentMonth();
         void ChangeDestinationStatus(int id);
+        List<Destination> GetLast4Destinations();
     }
 }

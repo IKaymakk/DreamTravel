@@ -36,6 +36,12 @@ namespace DataAccessLayer.EntityFramework
             }
         }
 
+        public List<Destination> GetLast4Destinations()
+        {
+            var values = _context.Destinations.Take(4).OrderByDescending(x => x.DestinationID).ToList();
+            return values;
+        }
+
         public float GetTotalPrice()
         {
             return (float)_context.Reservations.Sum(r => r.Destination.Price);

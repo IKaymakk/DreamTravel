@@ -64,7 +64,7 @@ namespace DreamTravel.Areas.User.Controllers
             {
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("SignIn", "Login");
+                    return RedirectToAction("SignIn", "Login", new { area = "" });
                 }
             }
             else

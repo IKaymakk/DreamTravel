@@ -3,54 +3,86 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
-<form method="post" enctype="multipart/form-data">
-    <label>Adınız</label>
-    <input asp-for="name" type="text" class="form-control" />
-    <span asp-validation-for="name" class="text-danger"></span>
-    <br />
-    <label>Soyadınız</label>
-    <input asp-for="surname" type="text" class="form-control" />
-    <span asp-validation-for="surname" class="text-danger"></span>
-
-    <br />
-    <label>Mail Adresi</label>
-    <input asp-for="email" type="text" class="form-control" />
-    <span asp-validation-for="email" class="text-danger"></span>
-
-    <br />
-    <label>Kullanıcı Adı</label>
-    <input asp-for="username" type="text" class="form-control" />
-    <span asp-validation-for="username" class="text-danger"></span>
-
-    <br />
-    <label>Telefon Numarası</label>
-    <input asp-for="phonenumber" type="text" class="form-control" />
-    <span asp-validation-for="phonenumber" class="text-danger"></span>
-
-
-    <br />
-    <label>Şifre</label>
-    <input asp-for="password" type="text" class="form-control" />
-    <span asp-validation-for="password" class="text-danger"></span>
-
-    <br />
-    <label>Şifreyi Onayla</label>
-    <input asp-for="confirpassword" type="text" class="form-control" />
-    <span asp-validation-for="confirpassword" class="text-danger"></span>
-
-    <br />
-    <div class="form-group">
-        <input type="file" asp-for="image" class="form-control" />
-
+<style>
+    input {
+        padding-top: 1em !important;
+        padding-bottom: 1em !important;
+    }
+</style>
+<form method="post" enctype="multipart/form-data" style="padding:0em 5.2em 0em 5em">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Adınız</label>
+                <input asp-for="name" type="text" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Soyadınız</label>
+                <input asp-for="surname" type="text" class="form-control" />
+                <span asp-validation-for="surname" class="text-danger"></span>
+            </div>
+        </div>
     </div>
-    <br />
-    <div class="form-group">
-            <h4>Profil Resminiz</h4>
-            <img style="width:200px;height:160px;border-radius:20px" src="@Model.imageurl" alt="Profil Resmi" />
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Mail Adresi</label>
+                <input asp-for="email" type="text" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Kullanıcı Adı</label>
+                <input asp-for="username" type="text" class="form-control" />
+                <span asp-validation-for="username" class="text-danger"></span>
+            </div>
+        </div>
     </div>
-    <br />
-    <div class="text-danger" asp-validation-summary="ModelOnly">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Telefon Numarası</label>
+                <input asp-for="phonenumber" type="text" class="form-control" />
+                <span asp-validation-for="phonenumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Profil Resmi</label>
+                <input type="file" asp-for="image" class="form-control" />
+            </div>
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Şifre</label>
+                <input asp-for="password" type="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Şifreyi Onayla</label>
+                <input asp-for="confirpassword" type="password" class="form-control" />
+                <span asp-validation-for="confirpassword" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div  class="form-group " style="align-items:center">
+        <h4>Profil Resminiz</h4>
+        <img style="width:200px;height:160px;border-radius:20px" src="@Model.imageurl" alt="Profil Resmi" />
+    </div>
+
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
     <button class="btn bg-gradient-primary">Kaydet</button>
 </form>
 

@@ -28,7 +28,7 @@ namespace DreamTravel.Areas.User.Controllers
             List<SelectListItem> values = (from x in _manager.GetListAll()
                                            select new SelectListItem
                                            {
-                                               Text = x.City,
+                                               Text = x.City +" - $" + x.Price,
                                                Value = x.DestinationID.ToString()
                                            }).ToList();
             ViewBag.v = values;
@@ -39,7 +39,6 @@ namespace DreamTravel.Areas.User.Controllers
         {
             p.Status = "Onay Bekliyor";
             p.AppUserId = 20;
-            p.ReservationDate = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
             rm.Insert(p);
             return RedirectToAction("ProgressingReservation", "Reservation", new { area = "User" });
         }

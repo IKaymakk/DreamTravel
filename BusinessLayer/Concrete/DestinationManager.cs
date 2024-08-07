@@ -36,9 +36,6 @@ namespace BusinessLayer.Concrete
         {
             return _dal.GetAll();
         }
-
-
-
         public void Insert(Destination t)
         {
             _dal.Add(t);
@@ -67,6 +64,11 @@ namespace BusinessLayer.Concrete
         public float GetTotalPriceJanuary()
         {
             return _dal.GetTotalPriceJanuary();
+        }
+
+        public List<Destination> TGetLast4Destinations()
+        {
+            return _dal.GetLast4Destinations();
         }
     }
 }

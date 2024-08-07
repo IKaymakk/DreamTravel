@@ -14,5 +14,7 @@ namespace BusinessLayer.Abstract
         float GetTotalPriceCurrentMonth();
         float GetTotalPriceJanuary();
 
+        public List<Destination> TGetLast4Destinations();
+
     }
 }

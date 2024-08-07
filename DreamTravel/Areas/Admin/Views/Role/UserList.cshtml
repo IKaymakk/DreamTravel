@@ -1,0 +1,59 @@
+﻿@model List<AppUser>
+@{
+    ViewData["Title"] = "UserList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script>
+    function clicked(e) {
+        if (!confirm('Silmek istediğinden emin misin?')) {
+            e.preventDefault();
+        }
+    }
+</script>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+@if (Model.Count > 0)
+{
+    <div class="card">
+        <h4 class="card-header">Kullanıcı Listesi<a class="btn btn-primary" style="margin-left:58em" href="/Admin/Role/CreateRole">Yeni Rol Ekle</a></h4>
+        <div class="table-responsive text-nowrap">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="color:black">Kullanıcı Adı</th>
+                        <th class="text-secondary opacity-7">Rol Ata</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+
+
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0">@x.Name</p>
+                            </td>
+
+                            <td>
+                                <a href="/Admin/Role/AssignRole/@x.Id" class="btn btn-primary" width="30" height="50"></a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <h3 class="alert alert-warning text-center">Herhangi Bir Kullanıcı Yok</h3>
+    <br />
+    <a href="/Admin/Role/CreateRole" class="btn btn-outline-primary">Kullanıcı Ekle</a>
+}
+
