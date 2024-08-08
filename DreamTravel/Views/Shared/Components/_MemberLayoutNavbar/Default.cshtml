@@ -1,0 +1,22 @@
+﻿<ul class="nav navbar-nav float-right">
+    <li class="dropdown dropdown-notification nav-item">
+        <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell">             </i></a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <div class="arrow_box_right"><a class="dropdown-item" href="#"><i class="ft-book"></i> Read Mail</a><a class="dropdown-item" href="#"><i class="ft-bookmark"></i> Read Later</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Mark all Read       </a></div>
+        </div>
+    </li>
+
+
+
+
+    <li class="dropdown dropdown-user nav-item">
+        <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">             <span class="avatar avatar-online"><img src="@ViewBag.navimage" alt="avatar"><i></i></span></a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <div class="arrow_box_right">
+                <a class="dropdown-item"><span class="avatar avatar-online"><img src="@ViewBag.navimage" alt="avatar"><span class="user-name text-bold-700 ml-1">@ViewBag.navname</span></span></a>
+                <div class="dropdown-divider"></div><a class="dropdown-item" href="/User/Profile/Index"><i class="ft-user"></i>Hesap Bilgilerim</a><a class="dropdown-item" href="/User/Reservation/ProgressingReservation"><i class="ft-mail"></i>Rezervasyonlarım</a>
+                <div class="dropdown-divider"></div><a class="dropdown-item" href="/Login/LogOut"><i class="ft-power"></i>Çıkış Yap</a>
+            </div>
+        </div>
+    </li>
+</ul>
