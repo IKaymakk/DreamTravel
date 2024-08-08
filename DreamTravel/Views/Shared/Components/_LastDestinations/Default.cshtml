@@ -4,50 +4,46 @@
     Layout = null;
 }
 <div class="col-12 mt-4">
-    <div class="card mb-4">
-        <div class="card-header pb-0 p-3">
-            <h6 class="mb-1">İlginizi Çekebilecek Seyahat Rotaları</h6>
-            <p class="text-sm">En Son Eklenenler</p>
-        </div>
-        <div class="card-body p-3">
-            <div class="row">
-                @foreach (var x in Model)
-                {
-
-                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                        <div class="card card-blog card-plain">
-                            <div class="position-relative">
-                                <a class="d-block shadow-xl border-radius-xl">
-                                    <img src="@x.Image" style="width:290px;height:180px" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
-                                </a>
-                            </div>
-                            <div class="card-body px-1 pb-0">
-                                <p class="text-gradient text-dark mb-2 text-sm">@x.DayNight</p>
-                                <a href="javascript:;">
-                                    <h5>
-                                        @x.City
-                                    </h5>
-                                </a>
-                                <p class="mb-4 text-sm">
-                                    @if (@x.Description.Length > 100)
-                                    {
-                                        @x.Description.Substring(0, 100)
-                                        ;
-                                    }
-                                    else
-                                    {
-                                        @x.Description
-                                    }
-                                </p>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <a style="width:100%" href="/User/Reservation/NewReservation" class="btn btn-outline-primary btn-sm mb-0">Rezervasyon Yap  -  $@x.Price</a>
-                                </div>
-                            </div>
+    <div class="card-header pb-0 p-3">
+        <h6 class="mb-1">İlginizi Çekebilecek Seyahat Rotaları</h6>
+        <p class="text-sm">En Son Eklenenler</p>
+    </div>
+    <div class="row">
+        @foreach (var x in Model)
+        {
+            <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                <div  class="card card-blog card-plain">
+                    <div class="position-relative">
+                        <a class="d-block shadow-xl border-radius-xl">
+                            <img src="@x.Image" style="width:290px;height:180px" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                        </a>
+                    </div>
+                    <div style="height:250px" class="card-body px-1 pb-0">
+                        <p class="text-gradient text-dark mb-2 text-sm">@x.DayNight</p>
+                        <a href="javascript:;">
+                            <h5>
+                                @x.City
+                            </h5>
+                        </a>
+                        <p class="mb-4 text-sm">
+                            @if (@x.Description.Length > 55)
+                            {
+                                @x.Description.Substring(0, 54)
+                                <a>...</a>
+                                
+                            }
+                            else
+                            {
+                                @x.Description
+                            }
+                        </p>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <a style="width:100%" href="/User/Reservation/NewReservation" class="btn btn-outline-danger btn-sm mb-0">Rezervasyon Yap  -  $@x.Price</a>
                         </div>
                     </div>
-                }
-
+                </div>
             </div>
-        </div>
+        }
+
     </div>
 </div>

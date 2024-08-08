@@ -1,48 +1,78 @@
 ﻿@model IEnumerable<EntityLayer.Concrete.Reservation>
 @{
     ViewData["Title"] = "ProgressingReservation";
-    Layout = "~/Views/Shared/UserLayout.cshtml";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
-
-<div class="container-fluid py-4">
-    <h2>Rezervasyonlarım</h2>
-    <div class="row ">
-        <div class="col-12">
-            <div class="card mb-4">
-                <div class="card-header pb-0">
+<div class="content-wrapper">
+    <div class="content-wrapper-before"></div>
+    <div class="content-header row">
+        <div class="content-header-left col-md-4 col-12 mb-2">
+            <h3 class="content-header-title">Rezervasyonlarım</h3>
+        </div>
+        <div class="content-header-right col-md-8 col-12">
+            <div class="breadcrumbs-top float-md-right">
+                <div class="breadcrumb-wrapper mr-1">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">
+                            DreamTravel
+                        </li>
+                    </ol>
                 </div>
-                <div class="card-body px-0 pt-0 pb-2">
-                    <div class=" p-0">
-                        <table style="width:100%" class="text-center table align-items-center mb-0">
+            </div>
+        </div>
+    </div>
+ 
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                    <h5 class="card-title">Henüz Onay Aşamasında Olan Rezervasyonlarınızı İptal Edebilirsiniz. </h5>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Lokasyon</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Lokasyon</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kişi Sayısı</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Durum</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tarih</th>
                                     <th class="text-secondary opacity-7"></th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var x in Model)
                                 {
                                     <tr>
-                                        <td>
+                                            <td class="align-middle text-center text-sm">
+                                                
                                             <b class="text-xs font-weight-bolder mb-0">@x.ReservationID</b>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <p class="text-xs font-weight-bold mb-0">@x.Destination.City</p>
-
+                                            <p class="text-xs  mb-0">@x.Destination.City</p>
                                         </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">@x.PersonCount</p>
+                                            <td class="align-middle text-center text-sm">
+                                                
+                                            <p class="text-xs  mb-0">@x.PersonCount</p>
                                         </td>
-                                        <td>
-                                            <span class="badge badge-sm bg-gradient-secondary">@x.Status</span>
+                                        <td class="text-center">
+                                            <span style="border-radius:8px" class=" badge bg-info ">@x.Status</span>
                                         </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">@x.ReservationDate.ToShortDateString()</p>
+                                        <td class="align-middle text-center text-sm">
+                                            <p class="text-xs  mb-0">@x.ReservationDate.ToShortDateString()</p>
                                         </td>
                                     </tr>
                                 }
@@ -53,6 +83,5 @@
             </div>
         </div>
     </div>
-
 </div>
-
+</div>

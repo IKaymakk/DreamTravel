@@ -1,0 +1,25 @@
+﻿<div class="col-xl-4 col-lg-12">
+    <div style="height:500px" class="card">
+        <div class="card-header">
+            <h4 class="card-title" id="heading-multiple-thumbnails">@ViewBag.Name</h4>
+            <a class="heading-elements-toggle">
+                <i class="la la-ellipsis-v font-medium-3"></i>
+            </a>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <h4 class="card-title">Profil Bilgilerim</h4>
+                <p class="card-text">
+                    Kullanıcı Adı : @ViewBag.Username
+                </p>
+                <p class="card-text">
+                    Mail Adresi : @ViewBag.Mail
+                </p>
+                <p class="card-text">
+                    Telefon Numarası: @ViewBag.Phone
+                </p>
+            </div>
+        </div>
+        <img style="height:258px" src="@ViewBag.Image" />
+    </div>
+</div>

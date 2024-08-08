@@ -1,9 +1,9 @@
 ﻿@model EntityLayer.Concrete.Reservation
 @{
     ViewData["Title"] = "NewReservation";
-    Layout = "~/Views/Shared/UserLayout.cshtml";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
-<h3>Rezervasyon Yap</h3>
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -11,28 +11,59 @@
 <link rel="stylesheet" href="https://unpkg.com/sweetalert/dist/sweetalert.min.css">
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<form id="reservationForm" style="width:98%" method="post">
-    <div class="form-group">
-        <label>Rotalar</label>
-        <select asp-for="DestinationID" class="form-control" asp-items="ViewBag.v" required>
-            <option value="">Nereye Gitmek İstiyorsunuz?</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label>Kişi Sayısı</label>
-        <input type="text" asp-for="PersonCount" class="form-control" />
-    </div>
-    <div style="width:20%" class="form-group">
-        <label>Tarih</label>
-        <input type="date" asp-for="ReservationDate" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label>Eklemek İstedikleriniz</label>
-        <textarea type="text" asp-for="Description" class="form-control"></textarea>
-    </div>
-    <button type="submit" class="xxx btn bg-gradient-primary">Rezervasyon Yap</button>
 
-</form>
+<div class="content-wrapper">
+    <div class="content-wrapper-before"></div>
+    <div class="content-header row">
+        <div class="content-header-left col-md-4 col-12 mb-2">
+            <h3 class="content-header-title">Rezervasyon Oluştur</h3>
+        </div>
+        <div class="content-header-right col-md-8 col-12">
+            <div class="breadcrumbs-top float-md-right">
+                <div class="breadcrumb-wrapper mr-1">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">
+                            DreamTravel
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <form id="reservationForm" style="width:98%" method="post">
+        <br />
+        <br />
+        <div class="form-group">
+            <label>Seyahat Yerleri</label>
+            <select asp-for="DestinationID" class="form-control" asp-items="ViewBag.v" required>
+                <option value="">Nereye Gitmek İstiyorsunuz?</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Kişi Sayısı</label>
+                    <input type="number" asp-for="PersonCount" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Tarih</label>
+                    <input type="date" asp-for="ReservationDate" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Eklemek İstedikleriniz</label>
+            <textarea type="text" asp-for="Description" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="xxx btn btn-outline-danger">Rezervasyon Yap</button>
+    </form>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

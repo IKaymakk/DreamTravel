@@ -24,5 +24,15 @@ namespace DreamTravel.Areas.User.Controllers
             ViewBag.Mail = values.Email;
             return View();
         }
+        public async Task<IActionResult> MemberDashboard()
+        {
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            ViewBag.Name = values.Name + " " + values.Surname;
+            ViewBag.Image = values.ImageUrl;
+            ViewBag.Phone = values.PhoneNumber;
+            ViewBag.Username = values.UserName;
+            ViewBag.Mail = values.Email;
+            return View();
+        }
     }
 }
