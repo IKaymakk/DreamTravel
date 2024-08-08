@@ -16,7 +16,9 @@ using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Options;
 using System.Reflection;
 
@@ -58,7 +60,7 @@ namespace DreamTravel
                 _.Password.RequireLowercase = false;
                 _.Password.RequireUppercase = false;
                 _.Password.RequireDigit = false;
-            }).AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>();
+            }).AddErrorDescriber<CustomIdentityValidator>().AddTokenProvider<DataProtectorTokenProvider<AppUser>>(TokenOptions.DefaultProvider).AddEntityFrameworkStores<Context>();
 
             builder.Services.ContainerDependencies();
 
@@ -74,6 +76,19 @@ namespace DreamTravel
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
+            builder.Services.AddLocalization(opt =>
+            {
+                opt.ResourcesPath = "Resources";
+            });
+
+            builder.Services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
+
+            builder.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.SetDefaultCulture("tr");
+                options.AddSupportedUICultures("zh", "fr" ,"en","tr");
+                options.FallBackToParentUICultures = true;
+            });
 
             builder.Services.ConfigureApplicationCookie(options =>
             {
@@ -95,6 +110,7 @@ namespace DreamTravel
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseRequestLocalization(); 
 
             //app.MapControllerRoute(
             //    name: "default",
