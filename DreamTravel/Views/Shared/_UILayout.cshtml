@@ -1,4 +1,6 @@
-﻿@{
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
+@{
     Layout = null;
 }
 <!doctype html>
@@ -31,19 +33,19 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/Default/Index/">Ana Sayfa <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/Default/Index/">@localizer["Ana Sayfa"] <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/About/Index">Hakkımızda</a>
+                            <a class="nav-link" href="/About/Index">@localizer["Seyahatler"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Destination/Index/">Rotalar</a>
+                            <a class="nav-link" href="/Destination/Index/">@localizer["Rehberler"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Guide/Index/">Rehberlerimiz</a>
+                            <a class="nav-link" href="/Guide/Index/">@localizer["Hakkımızda"]</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Contact/Index/">İletişim</a>
+                            <a class="nav-link" href="/Contact/Index/">@localizer["İletişim"]</a>
                         </li>
 
                     </ul>
@@ -51,7 +53,38 @@
                 <div class="d-lg-block d-none">
                     <a href="contact.html" class="btn btn-style btn-secondary">Rezervasyon Yap</a>
                 </div>
-                <!-- toggle switch for light and dark theme -->
+
+                <ul style="padding-left:1em" class="nav navbar-nav float-right">
+                    <li class="dropdown dropdown-language nav-item">
+                        <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i id="current-flag" class="flag-icon"></i>
+                            <span class="selected-language"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-flag">
+                            <div class="arrow_box">
+                                <a class="dropdown-item" href="?culture=tr">
+                                    <i class="flag-icon flag-icon-tr"></i> Turkish
+                                </a>
+                                <a class="dropdown-item" href="?culture=en">
+                                    <i class="flag-icon flag-icon-us"></i> English
+                                </a>
+                                <a class="dropdown-item" href="?culture=cn">
+                                    <i class="flag-icon flag-icon-cn"></i> Chinese
+                                </a>
+                                <a class="dropdown-item" href="?culture=ru">
+                                    <i class="flag-icon flag-icon-ru"></i> Russian
+                                </a>
+                                <a class="dropdown-item" href="?culture=fr">
+                                    <i class="flag-icon flag-icon-fr"></i> French
+                                </a>
+                                <a class="dropdown-item" href="?culture=es">
+                                    <i class="flag-icon flag-icon-es"></i> Spanish
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
                 <div class="mobile-position">
                     <nav class="navigation">
                         <div class="theme-switch-wrapper">
@@ -65,21 +98,33 @@
                         </div>
                     </nav>
                 </div>
-                <!-- //toggle switch for light and dark theme -->
             </nav>
         </div>
         @RenderSection("message",false)
     </header>
-
-
-
-
     @RenderBody()
-
     @await Html.PartialAsync("/Views/LayoutPartial/_FooterPartial.cshtml")
-
     @await Html.PartialAsync("/Views/LayoutPartial/_ScriptsPartial.cshtml")
-
 </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // URL'deki sorgu parametrelerini alın
+        const params = new URLSearchParams(window.location.search);
+        let culture = params.get('culture');
 
+        // Eğer culture 'en' ise, bayrak simgesi 'us' olarak ayarlanır
+        if (culture === 'en') {
+            culture = 'us';
+        }
+        // Eğer culture boşsa, Türkiye bayrağı gösterilir
+        if (!culture) {
+            culture = 'tr';
+        }
+        // Bayrak simgesini güncelle
+        if (culture) {
+            const flagElement = document.getElementById('current-flag');
+            flagElement.className = 'flag-icon flag-icon-' + culture;
+        }
+    });
+</script>

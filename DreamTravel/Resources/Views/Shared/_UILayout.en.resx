@@ -117,7 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Merhaba" xml:space="preserve">
-    <value>Hello</value>
+  <data name="Adınız" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Ana Sayfa" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="asd1" xml:space="preserve">
+    <value>flag-icon-us</value>
+  </data>
+  <data name="Bize Ulaşın" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="E-posta Adresi" xml:space="preserve">
+    <value>E-mail Adress</value>
+  </data>
+  <data name="Gönder" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Hakkımızda" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Konu" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Mail Adresiniz" xml:space="preserve">
+    <value>E-Mail Adress</value>
+  </data>
+  <data name="Mesajlarınıza Dönüş Süremiz 48 Saattir." xml:space="preserve">
+    <value>Our response time to your messages is 48 hours.</value>
+  </data>
+  <data name="Mesajınız" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Ofis Adresi" xml:space="preserve">
+    <value>Office Address</value>
+  </data>
+  <data name="Rehberler" xml:space="preserve">
+    <value>Guides</value>
+  </data>
+  <data name="Rezervasyonlardan rehberlere, tur rotalarındaki konaklamadan vize işlemlerine kadar aklınıza takılan soru, öneri veya taleplerinizi 7/24 bize iletebilirsiniz" xml:space="preserve">
+    <value>You can send us your open questions, offers or requests 24/7, from reservations to guidance, from accommodations on tour routes to visa procedures.</value>
+  </data>
+  <data name="Seyahatler" xml:space="preserve">
+    <value>Destinations</value>
+  </data>
+  <data name="Üye Olmadan Rezervasyon Yapmak İçin Bize Ulaşın" xml:space="preserve">
+    <value>Contact Us to Make a Reservation Without Becoming a Member</value>
+  </data>
+  <data name="İletişim" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="İletişim Numarası" xml:space="preserve">
+    <value>Contact Number </value>
   </data>
 </root>

@@ -1,4 +1,6 @@
-﻿@model DTOLayer.DTOs.ContactDTOs.SendMessageDto
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
+@model DTOLayer.DTOs.ContactDTOs.SendMessageDto
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UILayout.cshtml";
@@ -16,10 +18,10 @@
 <section class="w3l-about-breadcrumb text-left">
     <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
         <div class="container py-2">
-            <h2 class="title">Bize Ulaşın</h2>
+            <h2 class="title">@localizer["Bize Ulaşın"]</h2>
             <ul class="breadcrumbs-custom-path mt-2">
                 <li><a href="/Default/Index">DreamTravel</a></li>
-                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span>İletişim</li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span>@localizer["İletişim"]</li>
             </ul>
         </div>
     </div>
@@ -33,51 +35,53 @@
                 <div class="col-lg-6 contact-left">
                     <div class="partners">
                         <div class="cont-details">
-                            <h5>Bize Ulaşmaktan Çekinmeyin</h5>
+                            <h5>@localizer["İletişim"]</h5>
                             <p class="mt-3 mb-4">
-                                Rezervasyonlardan rehberlere, tur rotalarındaki konaklamadan vize işlemlerine kadar aklınıza takılan soru, öneri veya taleplerinizi 7/24 bize iletebilirsiniz.
+                                @localizer["Rezervasyonlardan rehberlere, tur rotalarındaki konaklamadan vize işlemlerine kadar aklınıza takılan soru, öneri veya taleplerinizi 7/24 bize iletebilirsiniz"]
                             </p>
                             <p>
-                                Mesajlarınıza Dönüş Süremiz 48 Saattir.
+                                @localizer["Mesajlarınıza Dönüş Süremiz 48 Saattir."]
                             </p>
                         </div>
                         <br />
                         <div class="hours">
-                            <h6 class="mt-4">Email Adresi:</h6>
+                            <h6 class="mt-4">@localizer["E-posta Adresi"]</h6>
                             <p>
                                 <a href="mailto:info@dreamtravel.com">
                                     info@dreamtravel.com
                                 </a>
                             </p>
-                            <h6 class="mt-4">Ofis Adresi:</h6>
+                            <h6 class="mt-4">@localizer["Ofis Adresi"]</h6>
                             <p> 78-80 Upper St Giles St. Norwich NR2 1LT United Kingdom.</p>
-                            <h6 class="mt-4">İletişim Numarası</h6>
+                            <h6 class="mt-4">@localizer["İletişim Numarası"]</h6>
                             <p class="margin-top"><a href="tel:+44-255-366-88">0212 856 77 12</a></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 mt-lg-0 mt-5 contact-right">
+                    <h4>@localizer["Üye Olmadan Rezervasyon Yapmak İçin Bize Ulaşın"]</h4>
+                    <br />
                     <form method="post" class="signin-form">
                         <div class="input-grids">
                             <div class="form-group">
-                                <input type="text" id="w3lName" placeholder="Adınız*" asp-for="Name" class="contact-input" />
+                                <input type="text" id="w3lName" placeholder="@localizer["Adınız"]*" asp-for="Name" class="contact-input" />
                                 <span class="text-danger" asp-validation-for="Name"></span>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="w3lSender" placeholder="Mail Adresiniz*" asp-for="Mail" class="contact-input" />
+                                <input type="text" id="w3lSender" placeholder="@localizer["Mail Adresiniz"]*" asp-for="Mail" class="contact-input" />
                                 <span class="text-danger" asp-validation-for="Mail"></span>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="w3lSubect" placeholder="Konu*" asp-for="Subject" class="contact-input" />
+                                <input type="text" id="w3lSubect" placeholder="@localizer["Konu"]*" asp-for="Subject" class="contact-input" />
                                 <span class="text-danger" asp-validation-for="Subject"></span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <textarea id="w3lMessage" placeholder="Mesajınız*" asp-for="Content"></textarea>
+                            <textarea id="w3lMessage" placeholder="@localizer["Mesajınız"]*" asp-for="Content"></textarea>
                             <span class="text-danger" asp-validation-for="Content"></span>
                         </div>
                         <div class="text-right">
-                            <button class="btn btn-style btn-primary">Gönder</button>
+                            <button class="btn btn-style btn-primary">@localizer["Gönder"]</button>
                         </div>
                     </form>
                 </div>

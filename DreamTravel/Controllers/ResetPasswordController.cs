@@ -37,6 +37,10 @@ namespace DreamTravel.Controllers
                 ModelState.AddModelError(string.Empty, "Bu e-posta adresiyle kayıtlı bir kullanıcı bulunamadı.");
                 return View(forgetPasswordViewModel);
             }
+            else
+            {
+                ViewBag.SuccessMessage = "Şifre sıfırlama bağlantısı e-posta adresinize gönderildi. Lütfen e-postanızı kontrol edin.";
+            }
             string passwordResetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
             var passwordResetTokenLink = Url.Action("ChangePassword", "ResetPassword", new
             {
@@ -54,7 +58,7 @@ namespace DreamTravel.Controllers
             mimeMessage.To.Add(mailboxAddressTo);
 
             var bodyBuilder = new BodyBuilder();
-            bodyBuilder.TextBody = passwordResetTokenLink;
+            bodyBuilder.TextBody ="Bu linke tıklayarak DreamTravel hesabınızın şifresini yenileyebilirsiniz."+ " "+ passwordResetTokenLink;
             mimeMessage.Body = bodyBuilder.ToMessageBody();
 
             mimeMessage.Subject = "Şifre Değişiklik Talebi";

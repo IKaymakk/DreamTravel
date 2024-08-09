@@ -117,7 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Merhaba" xml:space="preserve">
-    <value>Merhaba</value>
+  <data name="Contact" xml:space="preserve">
+    <value>İletişim</value>
+  </data>
+  <data name="Contact Number" xml:space="preserve">
+    <value>İletişim Numarası</value>
+  </data>
+  <data name="Contact Us" xml:space="preserve">
+    <value>Bize Ulaşın</value>
+  </data>
+  <data name="Contact Us to Make a Reservation Without Becoming a Member" xml:space="preserve">
+    <value>Üye Olmadan Rezervasyon Yapmak İçin Bize Ulaşın</value>
+  </data>
+  <data name="E-mail Adress" xml:space="preserve">
+    <value>E-posta Adresi</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Mesajınız</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Adınız</value>
+  </data>
+  <data name="Office Address" xml:space="preserve">
+    <value>Ofis Adresi</value>
+  </data>
+  <data name="Our response time to your messages is 48 hours." xml:space="preserve">
+    <value>Mesajlarınıza Dönüş Süremiz 48 Saattir.</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Gönder</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="String8" xml:space="preserve">
+    <value>Mail Adresiniz</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Konu</value>
+  </data>
+  <data name="You can send us your open questions, offers or requests 24/7, from reservations to guidance, from accommodations on tour routes to visa procedures." xml:space="preserve">
+    <value>Rezervasyonlardan rehberlere, tur rotalarındaki konaklamadan vize işlemlerine kadar aklınıza takılan soru, öneri veya taleplerinizi 7/24 bize iletebilirsiniz</value>
   </data>
 </root>
